@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="app_name"></string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_sign_up"></string>
+    <string name="title_activity_main"></string>
+    <string name="title_activity_student_portal"></string>
+
+    <string-array name="spinnerItems">
+        <item>Beginner</item>
+        <item>Basic</item>
+        <item>Elementary</item>
+        <item>Pre Intermediate</item>
+        <item>Intermediate</item>
+        <item>Upper Intermediate</item>
+        <item>Advanced</item>
+    </string-array>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

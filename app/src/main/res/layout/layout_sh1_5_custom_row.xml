@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/sh1_5Button"
+        android:background="@drawable/regular" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/sh1_5ListInfo"
+        android:layout_alignBottom="@+id/sh1_5Button"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_toRightOf="@+id/sh1_5Button"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/sh1_5ListDetail"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/sh1_5ListInfo"
+        android:layout_toRightOf="@+id/sh1_5ListInfo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical|center_horizontal" />
+
+</RelativeLayout>

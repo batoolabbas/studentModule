@@ -1,12 +1,16 @@
 package com.studentmodule;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -28,10 +32,21 @@ public class SignUp extends ActionBarActivity {
     private Button skypeDownload;
     private Button confirmSignUp;
 
+    String englishLevel;
+    String [] levels;
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = sharedPreferences.edit();
+
+        levels = getResources().getStringArray(R.array.spinnerItems);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.signupActivityInclude);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
@@ -54,13 +69,25 @@ public class SignUp extends ActionBarActivity {
         String reEnterPassword = reEnterPasswordField.getText().toString();
 
         skypeIDField = (EditText) findViewById(R.id.skypeIDField);
-        String skypeID = skypeIDField.getText().toString();
+        final String skypeID = skypeIDField.getText().toString();
 
         birthdayField = (EditText) findViewById(R.id.birthdayField);
         String birthday = birthdayField.getText().toString();
 
         levelSelect = (Spinner) findViewById(R.id.englishLevelSpinner);
-        String englishLevel = levelSelect.getSelectedItem().toString();
+
+        levelSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                englishLevel = levels[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+                englishLevel = levelSelect.getSelectedItem().toString();
+            }
+        });
 
         skypeDownload = (Button) findViewById(R.id.downloadSkypeButton);
         skypeDownload.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +101,13 @@ public class SignUp extends ActionBarActivity {
         confirmSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent( SignUp.this , StudentPortalActivity.class );
+                Intent i = new Intent(SignUp.this, StudentPortalActivity.class);
+
+                editor.putString("EnglishLevel", englishLevel);
+                editor.putString("SkypeID", skypeID);
+                Log.i("English Level", englishLevel);
+                editor.commit();
+
                 startActivity(i);
             }
         });

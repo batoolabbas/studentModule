@@ -6,13 +6,15 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.VideoView;
+import SH1.SH1;
+import SH2.*;
 
 /**
  * Created by aliabbasjaffri on 08/07/15.
@@ -58,15 +60,13 @@ public class MyPageFragment extends Fragment {
             }
         });
 
-        final Fragment fragment = new SH1();
+        final Fragment fragment = new SH2();
 
         tutorCardButton = (Button) view.findViewById(R.id.tutorCardButton);
         tutorCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Tutor Card Buttom" , " Button Clicked");
-
-                getActivity().getSupportFragmentManager().beginTransaction().replace( R.id.frame_container , fragment).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack("").commit();
             }
         });
 

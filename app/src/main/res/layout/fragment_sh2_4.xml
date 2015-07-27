@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="SH2.SH2_4"
+    android:background="@color/purple">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="My Level of English is"
+        android:id="@+id/textview19"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/sh2_4EnglishLevelTextView"
+        android:layout_below="@+id/textview19"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/toolbar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Modify Level"
+        android:id="@+id/textView14"
+        android:layout_marginTop="73dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/sh2_4EnglishLevelTextView"
+        android:layout_alignRight="@+id/sh2_4EnglishLevelTextView"
+        android:layout_alignEnd="@+id/sh2_4EnglishLevelTextView" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sh2_4EnglishLevelSpinner"
+        android:layout_below="@+id/textView14"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:entries="@array/spinnerItems" />
+</RelativeLayout>

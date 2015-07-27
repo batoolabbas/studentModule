@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import SH02.*;
 
 /**
  * Created by aliabbasjaffri on 08/07/15.
@@ -47,7 +48,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return MyPageFragment.newInstance(2);
             case 2:
-                return MyPageFragment.newInstance(3);
+                return SH02_2.newInstance( );
             case 3:
                 return MyPageFragment.newInstance(4);
         }

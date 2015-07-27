@@ -4,5 +4,10 @@
     <item name="toolbar" type="color">#ff6569</item>
     <item name="white" type="color">#FFFFFF</item>
     <item name="purple" type="color">#534976</item>
+    <item name="gray" type="color">#EEEEEE</item>
+    <item name="black" type="color">#000000</item>
     <item name="background" type="color">#f1f1f1</item>
+    <item name="sunday" type="color">#E27095</item>
+    <item name="weekdaycolor" type="color">#524976</item>
+    <item name="backgroundcolor" type="color">#3F355A</item>
 </resources>

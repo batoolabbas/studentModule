@@ -1,14 +1,15 @@
-package com.studentmodule;
+package SH1;
 
 
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import com.studentmodule.R;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,7 @@ public class SH1_5 extends Fragment {
     private String mParam2;
 
     private ListView LV;
+    private sh15ArrayAdapter adaptor;
     private ArrayList <sh1_5Data> items = new ArrayList<>();
 
 
@@ -61,8 +63,6 @@ public class SH1_5 extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
@@ -74,19 +74,15 @@ public class SH1_5 extends Fragment {
         items.add(new sh1_5Data("hello" , "How are" , "you bhai" , true ));
         items.add(new sh1_5Data("hello" , "How are" , "you bhai" , false ));
         items.add(new sh1_5Data("hello" , "How are" , "you bhai" , true ));
+        items.add(new sh1_5Data("hello" , "How are" , "you bhai" , false ));
         items.add(new sh1_5Data("hello" , "How are" , "you bhai" , true ));
-        items.add(new sh1_5Data("hello" , "How are" , "you bhai" , true ));
-        items.add(new sh1_5Data("hello" , "How are" , "you bhai" , true ));
+        items.add(new sh1_5Data("hello" , "How are" , "you bhai" , false ));
 
-        Log.i("Hello" , "in onCreateView SH1_5");
-
-        sh1_5ArrayAdapter adapter = new sh1_5ArrayAdapter( getActivity().getApplicationContext() , R.layout.layout_sh1_5_custom_row , items );
+        adaptor = new sh15ArrayAdapter( getActivity() , R.layout.layout_sh1_5_custom_row , items );
 
         LV = (ListView) view.findViewById(R.id.sh1_5ListView);
-        LV.setAdapter(adapter);
+        LV.setAdapter(adaptor);
 
         return view;
     }
-
-
 }

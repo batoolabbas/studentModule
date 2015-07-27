@@ -1,4 +1,4 @@
-package com.studentmodule;
+package SH1;
 
 /**
  * Created by aliabbasjaffri on 23/07/15.

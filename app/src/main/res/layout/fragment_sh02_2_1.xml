@@ -1,0 +1,142 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="SH02.SH02_2_1"
+    android:background="@color/backgroundcolor">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/sh02_2_1TextView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="@color/white" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunday"
+        android:id="@+id/sh02_2_1SundayButton"
+        android:layout_below="@+id/sh02_2_1TextView"
+        android:layout_marginTop="5dp"
+        android:background="@color/sunday"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_alignLeft="@+id/sh02_2_1MondayButton"
+        android:layout_alignStart="@+id/sh02_2_1MondayButton"
+        android:layout_alignRight="@+id/sh02_2_1MondayButton"
+        android:layout_alignEnd="@+id/sh02_2_1MondayButton" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Monday"
+        android:id="@+id/sh02_2_1MondayButton"
+        android:layout_below="@+id/sh02_2_1SundayButton"
+        android:background="@color/weekdaycolor"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_alignRight="@+id/sh02_2_1SearchMatchingTutorsButton"
+        android:layout_alignEnd="@+id/sh02_2_1SearchMatchingTutorsButton"
+        android:layout_alignLeft="@+id/sh02_2_1SearchMatchingTutorsButton"
+        android:layout_alignStart="@+id/sh02_2_1SearchMatchingTutorsButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tuesday"
+        android:id="@+id/sh02_2_1TuesdayButton"
+        android:layout_below="@+id/sh02_2_1MondayButton"
+        android:layout_alignLeft="@+id/sh02_2_1MondayButton"
+        android:layout_alignStart="@+id/sh02_2_1MondayButton"
+        android:background="@color/weekdaycolor"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_alignRight="@+id/sh02_2_1MondayButton"
+        android:layout_alignEnd="@+id/sh02_2_1MondayButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wednesday"
+        android:id="@+id/sh02_2_1WednesdayButton"
+        android:layout_below="@+id/sh02_2_1TuesdayButton"
+        android:background="@color/weekdaycolor"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_alignLeft="@+id/sh02_2_1MondayButton"
+        android:layout_alignStart="@+id/sh02_2_1MondayButton"
+        android:layout_alignRight="@+id/sh02_2_1TuesdayButton"
+        android:layout_alignEnd="@+id/sh02_2_1TuesdayButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thursday"
+        android:id="@+id/sh02_2_1ThursdayButton"
+        android:layout_below="@+id/sh02_2_1WednesdayButton"
+        android:background="@color/weekdaycolor"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_alignRight="@+id/sh02_2_1WednesdayButton"
+        android:layout_alignEnd="@+id/sh02_2_1WednesdayButton"
+        android:layout_alignLeft="@+id/sh02_2_1WednesdayButton"
+        android:layout_alignStart="@+id/sh02_2_1WednesdayButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friday"
+        android:id="@+id/sh02_2_1FridayButton"
+        android:layout_below="@+id/sh02_2_1ThursdayButton"
+        android:background="@color/weekdaycolor"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_alignRight="@+id/sh02_2_1WednesdayButton"
+        android:layout_alignEnd="@+id/sh02_2_1WednesdayButton"
+        android:layout_alignLeft="@+id/sh02_2_1ThursdayButton"
+        android:layout_alignStart="@+id/sh02_2_1ThursdayButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saturday"
+        android:id="@+id/sh02_2_1SaturdayButton"
+        android:layout_below="@+id/sh02_2_1FridayButton"
+        android:background="@color/weekdaycolor"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_alignRight="@+id/sh02_2_1WednesdayButton"
+        android:layout_alignEnd="@+id/sh02_2_1WednesdayButton"
+        android:layout_alignLeft="@+id/sh02_2_1WednesdayButton"
+        android:layout_alignStart="@+id/sh02_2_1WednesdayButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Matching tutors"
+        android:id="@+id/sh02_2_1SearchMatchingTutorsButton"
+        android:layout_below="@+id/sh02_2_1SaturdayButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/toolbar"
+        android:textColor="@color/white"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
+
+</RelativeLayout>

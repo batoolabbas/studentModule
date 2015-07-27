@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="SH1.SH1_5_1"
+    android:background="@color/gray">
+
+    <!-- TODO: Update blank fragment layout -->
+    <include layout="@layout/layout_sh1_5_custom_row" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/fragmentSH1_5_1Row" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textView13"
+        android:layout_below="@+id/fragmentSH1_5_1Row"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="10dp"
+        android:minLines="3" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sh1_5_1RatingBar"
+        android:layout_below="@+id/textView13"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:padding="10dp"
+        android:background="@color/purple"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:numStars="5"
+        android:max="5"
+        android:stepSize="1"
+        android:rating="1"
+        android:longClickable="false"
+        android:clickable="false" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sh1_5_1ListView"
+        android:layout_below="@+id/sh1_5_1RatingBar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

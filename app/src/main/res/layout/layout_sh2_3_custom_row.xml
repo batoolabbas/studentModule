@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/sh02_2_1_1TutorImageView"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/sh02_2_1_1TutorNameTextView"
+        android:layout_toRightOf="@+id/sh02_2_1_1TutorImageView"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/sh02_2_1_1TutorImageView"
+        android:layout_toLeftOf="@+id/sh2_3TutorCountryImageView"
+        android:layout_toStartOf="@+id/sh2_3TutorCountryImageView" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/sh2_3TutorCountryImageView"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/sh2_3DeleteTutorButton"
+        android:layout_alignBottom="@+id/sh2_3DeleteTutorButton"
+        android:layout_toLeftOf="@+id/sh2_3DeleteTutorButton"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sh2_3DeleteTutorButton"
+        android:src="@drawable/delete_btn"
+        android:background="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:paddingRight="20dp"
+        android:paddingLeft="10dp"
+        android:layout_alignBottom="@+id/sh02_2_1_1TutorNameTextView" />
+
+</RelativeLayout>

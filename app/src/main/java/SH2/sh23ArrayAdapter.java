@@ -43,10 +43,10 @@ public class sh23ArrayAdapter extends ArrayAdapter<sh2_3Data>
 
         final sh2_3Data item = items.get(position);
 
-        ImageView profileImage = (ImageView) convertView.findViewById(R.id.sh02_2_1_1TutorImageView);
+        ImageView profileImage = (ImageView) convertView.findViewById(R.id.sh2_3TutorImageView);
         profileImage.setImageResource(item.getTutorImage());
 
-        TextView tutorName = (TextView) convertView.findViewById(R.id.sh02_2_1_1TutorNameTextView);
+        TextView tutorName = (TextView) convertView.findViewById(R.id.sh2_3TutorNameTextView);
         tutorName.setText(item.getTutorName());
 
         ImageView countryImage = (ImageView) convertView.findViewById(R.id.sh2_3TutorCountryImageView);

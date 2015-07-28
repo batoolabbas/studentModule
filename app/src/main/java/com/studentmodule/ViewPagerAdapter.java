@@ -9,6 +9,8 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
 import SH02.*;
+import SH03.*;
+import SH01.*;
 
 /**
  * Created by aliabbasjaffri on 08/07/15.
@@ -46,11 +48,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return MyPageFragment.newInstance(1);
             case 1:
-                return MyPageFragment.newInstance(2);
+                return SH03.newInstance();
             case 2:
-                return SH02_2.newInstance( );
+                return SH02_2.newInstance();
             case 3:
-                return MyPageFragment.newInstance(4);
+                return SH01.newInstance();
         }
         return null;
     }

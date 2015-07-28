@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:id="@+id/sh02_2_1_1TutorImageView"
+        android:id="@+id/sh2_3TutorImageView"
         android:layout_alignParentTop="true"
         android:paddingLeft="10dp"
         android:paddingBottom="10dp"
@@ -18,11 +18,11 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-        android:id="@+id/sh02_2_1_1TutorNameTextView"
-        android:layout_toRightOf="@+id/sh02_2_1_1TutorImageView"
+        android:id="@+id/sh2_3TutorNameTextView"
+        android:layout_toRightOf="@+id/sh2_3TutorImageView"
         android:gravity="center_vertical|center_horizontal"
         android:layout_alignParentTop="true"
-        android:layout_alignBottom="@+id/sh02_2_1_1TutorImageView"
+        android:layout_alignBottom="@+id/sh2_3TutorImageView"
         android:layout_toLeftOf="@+id/sh2_3TutorCountryImageView"
         android:layout_toStartOf="@+id/sh2_3TutorCountryImageView" />
 
@@ -48,6 +48,6 @@
         android:layout_alignParentEnd="true"
         android:paddingRight="20dp"
         android:paddingLeft="10dp"
-        android:layout_alignBottom="@+id/sh02_2_1_1TutorNameTextView" />
+        android:layout_alignBottom="@+id/sh2_3TutorNameTextView" />
 
 </RelativeLayout>

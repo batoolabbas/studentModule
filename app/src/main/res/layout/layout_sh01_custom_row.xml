@@ -52,8 +52,8 @@
         android:layout_alignEnd="@+id/sh01StatusImageView" />
 
     <Button
-        android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="45dp"
         android:id="@+id/sh01NowOnButton"
         android:background="@drawable/now_off"
         android:layout_alignParentTop="true"

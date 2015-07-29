@@ -2,21 +2,21 @@ package SH01;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.studentmodule.R;
+import com.studentmodule.StudentPortalActivity;
 
 import java.util.ArrayList;
-
-import SH2.sh2_3Data;
+import SH04.*;
 
 /**
  * Created by aliabbasjaffri on 29/07/15.
@@ -39,6 +39,7 @@ public class sh01ArrayAdapter extends ArrayAdapter<sh01Data>
     @Override
     public View getView(final int position, View convertView, ViewGroup parent)
     {
+        final Fragment fragment = new SH04();
 
         if (convertView == null)
         {
@@ -86,6 +87,7 @@ public class sh01ArrayAdapter extends ArrayAdapter<sh01Data>
             public void onClick(View v)
             {
                 Toast.makeText(context , "Touched " + item.getTutorName() , Toast.LENGTH_SHORT).show();
+                ((StudentPortalActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
             }
         });
 

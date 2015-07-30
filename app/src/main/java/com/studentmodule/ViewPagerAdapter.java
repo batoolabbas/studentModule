@@ -17,7 +17,9 @@ import SH01.*;
  */
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    private Context context;
+    private  Context context;
+    public static ViewPagerAdapter instance;
+    public static StudentPortalActivity studentPortalActivity;
 
     private int[] tabLayoutImages = {
             R.drawable.mypage,
@@ -29,9 +31,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     private String tabTitles[] = new String[] { "마이페이지", "쌤께 말걸기", "수강신청" , "Now On" };
 
 
-    public ViewPagerAdapter(FragmentManager fm , Context context) {
+    public ViewPagerAdapter(FragmentManager fm , Context context , StudentPortalActivity activity )
+    {
         super(fm);
         this.context = context;
+        instance = this;
+        studentPortalActivity = activity;
     }
 
 
@@ -42,8 +47,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public Fragment getItem(int position)
+    {
         // Returns a new instance of the fragment
+        studentPortalActivity.clearBackStack();
+
         switch (position) {
             case 0:
                 return MyPageFragment.newInstance(1);
@@ -70,5 +78,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
         sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return sb;
+    }
+
+    public String getPageName(int position)
+    {
+        return tabTitles[position];
     }
 }

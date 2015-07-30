@@ -60,13 +60,13 @@ public class MyPageFragment extends Fragment {
             }
         });
 
-        final Fragment fragment = new SH2();
+        final Fragment fragment = new SH1();
 
         tutorCardButton = (Button) view.findViewById(R.id.tutorCardButton);
         tutorCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack("").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
             }
         });
 

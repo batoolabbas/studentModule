@@ -1,133 +1,217 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:id="@+id/sh1Fragment" tools:context="SH1.SH1">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content" android:minWidth="800dp"
+    android:layout_height="fill_parent" android:id="@+id/sh1Fragment" tools:context="SH1.SH1"
+    android:fillViewport="true"
+    android:focusable="true">
 
     <!-- TODO: Update blank fragment layout -->
-
-
-    <ImageView
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:id="@+id/sh1BlurredBackground"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:orientation="vertical"
+        android:id="@+id/sh1MainContainer"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="match_parent"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:minWidth="500dp"
+        android:weightSum="6"
+        android:paddingBottom="0dp">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/sh1ProfileImage"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout2"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:background="@color/backgroundcolor"
+            android:id="@+id/sh1TopContainer"
+            android:layout_weight="4"
+            android:minWidth="800dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:padding="10dp"
+            android:paddingTop="20dp">
 
-    <ImageView
-        android:layout_width="15dp"
-        android:layout_height="20dp"
-        android:id="@+id/sh1ProfileBadge"
-        android:layout_alignTop="@+id/sh1ProfileImage"
-        android:layout_alignLeft="@+id/sh1ProfileImage"
-        android:layout_alignStart="@+id/sh1ProfileImage" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:id="@+id/sh1DisplayImageContainer"
+                android:layout_gravity="center"
+                android:measureWithLargestChild="false"
+                android:layout_marginTop="40dp"
+                android:background="@color/white">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/sh1ProfileName"
-        android:layout_below="@+id/sh1ProfileImage"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/white" />
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="180dp"
+                    android:id="@+id/sh1ProfileImage"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/jane">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/sh1UniversityName"
-        android:layout_alignBottom="@+id/sh1BlurredBackground"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/white" />
 
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="15dp"
-        android:id="@+id/sh1ProfileCountry"
-        android:layout_below="@+id/sh1ProfileName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp" />
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/sh1ProfileBadge"
+                        android:layout_alignTop="@+id/sh1ProfileImage"
+                        android:layout_alignLeft="@+id/sh1ProfileName"
+                        android:layout_alignStart="@+id/sh1ProfileName"
+                        android:src="@drawable/tutor_profile_badge" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/sh1PersonalDetails"
-        android:layout_below="@+id/sh1UniversityName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:minLines="4"
-        android:background="@color/white"
-        android:padding="10dp" />
+                </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/sh1VideoButton"
-        android:layout_below="@+id/sh1PersonalDetails"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/white"
-        android:gravity="center_vertical|left"
-        android:paddingLeft="10dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/sh1AudioButton"
-        android:layout_below="@+id/sh1VideoButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/white"
-        android:gravity="center_vertical|left"
-        android:paddingLeft="10dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/sh1Button3"
-        android:background="@color/white"
-        android:gravity="center_vertical|left"
-        android:paddingLeft="10dp"
-        android:layout_below="@+id/sh1AudioButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/sh1Button4"
-        android:background="@color/white"
-        android:gravity="center_vertical|left"
-        android:paddingLeft="10dp"
-        android:layout_below="@+id/sh1Button3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/sh1ProfileName"
+                android:layout_below="@+id/sh1ProfileImage"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp" />
 
-</RelativeLayout>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:id="@+id/sh1ProfileCountry"
+                android:layout_below="@+id/sh1ProfileName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/country" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Small Text"
+                android:id="@+id/sh1UniversityName"
+                android:layout_alignBottom="@+id/sh1BlurredBackground"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/linearLayout2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/sh1PersonalDetails"
+                android:minLines="4"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:layout_above="@+id/linearLayout"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/linearLayout">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/sh1VideoButton"
+                android:layout_below="@+id/sh1PersonalDetails"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/white"
+                android:drawableRight="@drawable/select_arrow"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/sh1AudioButton"
+                android:layout_below="@+id/sh1VideoButton"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/white"
+                android:drawableRight="@drawable/select_arrow"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/sh1Button3"
+                android:background="@color/white"
+                android:gravity="center_vertical|left"
+                android:drawableRight="@drawable/select_arrow"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/sh1AudioButton"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:paddingRight="10dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/sh1Button4"
+                android:background="@color/white"
+                android:gravity="center_vertical|left"
+                android:drawableRight="@drawable/select_arrow"
+                android:paddingLeft="10dp"
+                android:layout_below="@+id/sh1Button3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:paddingRight="10dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

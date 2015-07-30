@@ -4,12 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -24,59 +26,76 @@ import SH1.*;
 
 public class StudentPortalActivity extends AppCompatActivity
 {
-    ViewPager mViewPager;
+    CustomViewPager mViewPager;
+    ViewPagerAdapter viewPagerAdapter;
+    TabLayout tabLayout;
+
+    Toolbar toolbar;
+    TextView mTitle;
+    protected  StudentPortalActivity instance;
 
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_portal);
-        setToolbar("Student Mode" , false);
+
+        instance = this;
 
         WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
 
-        mViewPager = (ViewPager) findViewById(R.id.view_pager);
-        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager() , StudentPortalActivity.this));
+        mViewPager = (CustomViewPager) findViewById(R.id.view_pager);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager() , this.getApplicationContext() , instance );
+        mViewPager.setAdapter(viewPagerAdapter);
+        mViewPager.setPagingEnabled(false);
+        mViewPager.setOffscreenPageLimit(viewPagerAdapter.getCount() - 1);
         mViewPager.setBackgroundColor(Color.parseColor("#3f355b"));
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.baseActivityTabLayoutInclude);
+        toolbar = (Toolbar) findViewById(R.id.baseActivityToolbarInclude);
+        mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+
+        setToolbar("Student Mode", false);
+
+        tabLayout = (TabLayout) findViewById(R.id.baseActivityTabLayoutInclude);
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.setBackgroundColor(Color.parseColor("#f3f5f9"));
 
-        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
-                Fragment f = getSupportFragmentManager().findFragmentById(R.id.frame_container);
-                if (f != null) {
-                    f.setExitTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    updateFragmentName(f);
-                }
-                else if ( f.getClass().getName().equals("") || f.getClass().getName().equals("MyPageFragment"))
-                    setToolbar("Student Module", false);
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            }
-        });
-
-        getSupportFragmentManager().removeOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
-            public void onBackStackChanged()
+            public void onPageSelected(int arg0)
             {
-                getSupportFragmentManager().popBackStack();
+                clearBackStack();
+                String title = viewPagerAdapter.getPageName(arg0);
+                setToolbar(title, false);
+            }
 
-                Fragment f = getSupportFragmentManager().findFragmentById(R.id.frame_container);
-                if (f != null)
-                {
-                    f.setExitTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-                    updateFragmentName(f);
-                }
-                else
-                    setToolbar("Student Module", false);
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
             }
         });
+    }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        setToolbar("Student Mode" , false);
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            public void uncaughtException(Thread paramThread, Throwable paramThrowable) {
+                Log.e("Error" + Thread.currentThread().getStackTrace()[2], paramThrowable.getLocalizedMessage());
+                System.gc();
+                System.exit(0);
+            }
+        });
     }
 
     @Override
@@ -101,61 +120,74 @@ public class StudentPortalActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public void setToolbar(String title , boolean backButton)
+    public void setToolbar(String title, boolean backButton)
     {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.baseActivityToolbarInclude);
-        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
-
-        mTitle.setText(title);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(backButton);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(backButton);
-
-        if(backButton)
+        if (toolbar != null && mTitle != null)
         {
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            mTitle.setText(title);
+            setSupportActionBar(toolbar);
+            if (backButton)
+            {
+                getSupportActionBar().setHomeButtonEnabled(backButton);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(backButton);
+                toolbar.setNavigationIcon(R.drawable.back_arrow);
+            }
+            toolbar.setNavigationOnClickListener(new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     onBackPressed();
                 }
             });
         }
     }
 
-    private void updateFragmentName (Fragment fragment){
-        String fragClassName = fragment.getClass().getName();
+    @Override
+    protected void onStop() {
+        super.onStop();
 
-        Log.i("Frag Name" , fragClassName);
-
-        if (fragClassName.equals(MyPageFragment.class.getName()))
-        {
-            setToolbar("Student  Module", false);
-
-            //set selected item position, etc
-        }
-        else if (fragClassName.equals(SH1.class.getName()))
-        {
-            setToolbar("SH1", true);
-            //getSupportFragmentManager().popBackStack();
-            //set selected item position, etc
-        }
-        else if (fragClassName.equals(SH1_5.class.getName())){
-            setToolbar("SH1_5", true);
-            //set selected item position, etc
-        }
-        else if (fragClassName.equals(SH1_5_1.class.getName())){
-            setToolbar("SH1_5_1", true);
-            //set selected item position, etc
-        }
     }
+
 
     @Override
     public void onBackPressed()
     {
-        if( getSupportFragmentManager().getBackStackEntryCount() > 0 )
-        {
-            getSupportFragmentManager().popBackStack(getSupportFragmentManager().getBackStackEntryCount() , 1);
-            super.onBackPressed();
+        viewPagerAdapter.notifyDataSetChanged();
+        super.onBackPressed();
+    }
+
+
+    @Override
+    public void setSupportActionBar(Toolbar toolbar) {
+        super.setSupportActionBar(toolbar);
+    }
+
+
+
+    @Nullable
+    @Override
+    public ActionBar getSupportActionBar() {
+        return super.getSupportActionBar();
+    }
+
+
+
+
+    public void clearBackStack()
+    {
+        FragmentManager manager = getSupportFragmentManager();
+        if (manager.getBackStackEntryCount() > 0) {
+            manager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
+        setToolbar("Student Mode" , false);
+    }
+
+
+    @Override
+    protected void onDestroy()
+    {
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        super.onDestroy();
     }
 }

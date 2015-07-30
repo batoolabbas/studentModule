@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.studentmodule.R;
+import com.studentmodule.ViewPagerAdapter;
 
 
 /**
@@ -31,8 +33,8 @@ public class SH1 extends Fragment
     // TODO: Rename and change types of parameters
     private String mParam1;
 
-    ImageView blurredBackground;
-    ImageView profilePicture;
+    LinearLayout blurredBackground;
+    LinearLayout profilePicture;
     ImageView profilePictureBadge;
     ImageView countryPicture;
     TextView profileDetail;
@@ -78,8 +80,10 @@ public class SH1 extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sh1, container, false);
 
-        blurredBackground = (ImageView) view.findViewById(R.id.sh1BlurredBackground);
-        profilePicture = (ImageView) view.findViewById(R.id.sh1ProfileImage);
+        ViewPagerAdapter.studentPortalActivity.setToolbar( "SH1" , true );
+
+        blurredBackground = (LinearLayout) view.findViewById(R.id.sh1TopContainer);
+        profilePicture = (LinearLayout) view.findViewById(R.id.sh1ProfileImage);
         profilePictureBadge = (ImageView) view.findViewById(R.id.sh1ProfileBadge);
         countryPicture = (ImageView) view.findViewById(R.id.sh1ProfileCountry);
         profileDetail = (TextView) view.findViewById(R.id.sh1PersonalDetails);
@@ -114,15 +118,16 @@ public class SH1 extends Fragment
             @Override
             public void onClick(View v) {
 
-                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack("").commit();
+
 
             }
         });
 
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View v)
+            {
+                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
             }
         });
 

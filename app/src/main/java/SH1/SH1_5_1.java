@@ -94,7 +94,7 @@ public class SH1_5_1 extends Fragment {
         RatingBar rb = (RatingBar) view.findViewById(R.id.sh1_5_1RatingBar);
         rb.setMax(5);
         rb.setNumStars(5);
-        rb.setRating(4.5f);
+        rb.setRating(4.0f);
 
         items.add(new sh1_5_1Data("hello" , "How are you bhai"));
         items.add(new sh1_5_1Data("hello" , "How are you bhai"));

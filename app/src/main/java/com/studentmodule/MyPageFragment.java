@@ -47,6 +47,8 @@ public class MyPageFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mypage, container, false);
 
+        ViewPagerAdapter.studentPortalActivity.setToolbar( "My Page" , false );
+
         videoView = (VideoView) view.findViewById(R.id.videoView);
         media = new MediaController(getActivity());
         videoView.setMediaController(media);

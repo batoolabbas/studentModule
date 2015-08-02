@@ -1,4 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:minWidth="800dp"
+    android:layout_height="fill_parent" tools:context="SH02.SH02_2_1"
+    android:fillViewport="true"
+    android:focusable="true">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="SH02.SH02_2_1"
     android:background="@color/backgroundcolor">
@@ -140,3 +146,5 @@
         android:paddingRight="5dp" />
 
 </RelativeLayout>
+
+</ScrollView>

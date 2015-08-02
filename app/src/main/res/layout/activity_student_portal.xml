@@ -1,40 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="800dp"
+    android:fillViewport="true">
 
-    <!--Toolbar for Tutor Activities-->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-    <include layout="@layout/toolbar" android:id="@+id/baseActivityToolbarInclude" />
+        <!--Toolbar for Tutor Activities-->
 
-    <!--TabLayout for View Pager-->
+        <include layout="@layout/toolbar" android:id="@+id/baseActivityToolbarInclude" />
 
-    <include layout="@layout/tablayout" android:id="@+id/baseActivityTabLayoutInclude"
-        android:layout_below="@+id/baseActivityToolbarInclude"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        <!--TabLayout for View Pager-->
 
-    <com.studentmodule.CustomViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/baseActivityTabLayoutInclude"
-        android:layout_above="@+id/footer" />
+        <include layout="@layout/tablayout" android:id="@+id/baseActivityTabLayoutInclude"
+            android:layout_below="@+id/baseActivityToolbarInclude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    <include layout="@layout/footer" android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        <com.studentmodule.CustomViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/baseActivityTabLayoutInclude"
+            android:layout_above="@+id/footer" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/baseActivityTabLayoutInclude"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/frame_container"
-        android:layout_alignParentBottom="true" />
+        <include layout="@layout/footer" android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" />
 
-</RelativeLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/baseActivityTabLayoutInclude"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/frame_container"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+</ScrollView>

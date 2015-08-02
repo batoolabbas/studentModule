@@ -101,7 +101,7 @@ public class SignUp extends ActionBarActivity {
         confirmSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SignUp.this, StudentPortalActivity.class);
+                Intent i = new Intent(SignUp.this, StudentFirstActivity.class);
 
                 editor.putString("EnglishLevel", englishLevel);
                 editor.putString("SkypeID", skypeID);

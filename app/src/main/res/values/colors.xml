@@ -10,4 +10,7 @@
     <item name="sunday" type="color">#E27095</item>
     <item name="weekdaycolor" type="color">#524976</item>
     <item name="backgroundcolor" type="color">#3F355A</item>
+    <item name="Red" type="color">#FFFF0000</item>
+
+
 </resources>

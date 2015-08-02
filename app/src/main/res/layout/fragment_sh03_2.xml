@@ -1,14 +1,21 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="SH03.SH03_2"
-    android:background="@color/gray">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content" android:minWidth="800dp"
+    android:layout_height="fill_parent" tools:context="SH03.SH03_2"
+    android:fillViewport="true"
+    android:focusable="true">
 
-    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" tools:context="SH03.SH03_2"
+        android:background="@color/gray">
 
-    <ExpandableListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/sh03_2ExpandableListView"
-        android:layout_gravity="left|top" />
+        <!-- TODO: Update blank fragment layout -->
 
-</RelativeLayout>
+        <ExpandableListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sh03_2ExpandableListView"
+            android:layout_gravity="left|top" />
+    </RelativeLayout>
+
+</ScrollView>

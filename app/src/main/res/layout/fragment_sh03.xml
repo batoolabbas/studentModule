@@ -1,71 +1,79 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="SH03.SH03"
-    android:background="@color/backgroundcolor">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content" android:minWidth="800dp"
+    android:layout_height="fill_parent" tools:context="SH03.SH03"
+    android:fillViewport="true"
+    android:focusable="true">
 
-    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" tools:context="SH03.SH03"
+        android:background="@color/backgroundcolor">
+
+        <!-- TODO: Update blank fragment layout -->
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="270dp"
-        android:id="@+id/imageView4"
-        android:src="@drawable/monster_recording_visual"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="270dp"
+            android:id="@+id/imageView4"
+            android:src="@drawable/monster_recording_visual"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="15dp" />
 
-    <TextView
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Say to tutors about yourself, your hobby, your family, your friends and etc in English."
-        android:id="@+id/textView15"
-        android:layout_alignTop="@+id/imageView4"
-        android:layout_alignLeft="@+id/sh03RecordButton"
-        android:layout_alignStart="@+id/sh03RecordButton"
-        android:layout_marginTop="25dp"
-        android:minLines="3" />
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Say to tutors about yourself, your hobby, your family, your friends and etc in English."
+            android:id="@+id/textView15"
+            android:layout_alignTop="@+id/imageView4"
+            android:layout_alignLeft="@+id/sh03RecordButton"
+            android:layout_alignStart="@+id/sh03RecordButton"
+            android:layout_marginTop="25dp"
+            android:minLines="3" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text=" Record"
-        android:id="@+id/sh03RecordButton"
-        android:drawableLeft="@drawable/playbtn"
-        android:layout_marginLeft="20dp"
-        android:textColor="@color/white"
-        android:background="@color/weekdaycolor"
-        android:layout_alignBottom="@+id/imageView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="25dp"
-        android:paddingLeft="10dp" />
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text=" Record"
+            android:id="@+id/sh03RecordButton"
+            android:drawableLeft="@drawable/playbtn"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"
+            android:background="@color/weekdaycolor"
+            android:layout_alignBottom="@+id/imageView4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:paddingLeft="10dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirm"
-        android:id="@+id/sh03ConfirmButton"
-        android:background="@color/weekdaycolor"
-        android:layout_below="@+id/sh03RecordButton"
-        android:layout_alignLeft="@+id/sh03RecordButton"
-        android:layout_alignStart="@+id/sh03RecordButton"
-        android:layout_alignRight="@+id/sh03RecordButton"
-        android:layout_alignEnd="@+id/sh03RecordButton"
-        android:layout_marginTop="10dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:id="@+id/sh03ConfirmButton"
+            android:background="@color/weekdaycolor"
+            android:layout_below="@+id/sh03RecordButton"
+            android:layout_alignLeft="@+id/sh03RecordButton"
+            android:layout_alignStart="@+id/sh03RecordButton"
+            android:layout_alignRight="@+id/sh03RecordButton"
+            android:layout_alignEnd="@+id/sh03RecordButton"
+            android:layout_marginTop="10dp" />
 
-    <TextView
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Say with courage and tutors will reply to you."
-        android:id="@+id/textView16"
-        android:layout_below="@+id/textView15"
-        android:layout_alignLeft="@+id/textView15"
-        android:layout_alignStart="@+id/textView15"
-        android:minLines="2"
-        android:textColor="@color/sunday" />
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Say with courage and tutors will reply to you."
+            android:id="@+id/textView16"
+            android:layout_below="@+id/textView15"
+            android:layout_alignLeft="@+id/textView15"
+            android:layout_alignStart="@+id/textView15"
+            android:minLines="2"
+            android:textColor="@color/sunday" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

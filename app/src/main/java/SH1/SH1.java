@@ -18,12 +18,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.studentmodule.R;
-import com.studentmodule.ViewPagerAdapter;
-
 import java.io.IOException;
-
+import SH4.*;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -228,7 +225,7 @@ public class SH1 extends Fragment
             @Override
             public void onClick(View v) {
 
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.teacherProfile, SH4.newInstance() ).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
 
             }
         });
@@ -240,8 +237,6 @@ public class SH1 extends Fragment
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.teacherProfile, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
             }
         });
-
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         return view;
     }

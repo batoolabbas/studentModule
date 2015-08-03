@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.studentmodule.R;
+import com.studentmodule.ViewPagerAdapter;
 
 
 /**

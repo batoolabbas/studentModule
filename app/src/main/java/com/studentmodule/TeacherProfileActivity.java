@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import SH1.*;
@@ -16,7 +17,7 @@ public class TeacherProfileActivity extends AppCompatActivity
 {
 
     private Toolbar toolbar;
-    private TextView mTitle;
+    private static TextView mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,8 +27,8 @@ public class TeacherProfileActivity extends AppCompatActivity
 
         toolbar = (Toolbar) findViewById(R.id.teacherProfileActivityToolbarInclude);
         mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        changeToolbarTitle("Teacher Profile");
 
-        mTitle.setText("Teacher Profile");
 
         Intent i = getIntent();
         String name = i.getStringExtra("teacherName");
@@ -56,5 +57,10 @@ public class TeacherProfileActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static void changeToolbarTitle( String title )
+    {
+        mTitle.setText(title);
     }
 }

@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import com.studentmodule.R;
+import com.studentmodule.ViewPagerAdapter;
+
 import java.util.ArrayList;
 
 /**

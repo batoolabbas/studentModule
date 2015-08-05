@@ -87,7 +87,7 @@ public class sh01ArrayAdapter extends ArrayAdapter<sh01Data>
             public void onClick(View v)
             {
                 Toast.makeText(context , "Touched " + item.getTutorName() , Toast.LENGTH_SHORT).show();
-                ((StudentPortalActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
+                ((StudentPortalActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
             }
         });
 

@@ -1,51 +1,59 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="SH04.SH04"
-    android:background="@color/backgroundcolor">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content" android:minWidth="800dp"
+    android:layout_height="fill_parent" tools:context="SH04.SH04"
+    android:fillViewport="true"
+    android:focusable="true">
 
-    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" tools:context="SH04.SH04"
+        android:background="@color/backgroundcolor">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="270dp"
-        android:id="@+id/imageView5"
-        android:src="@drawable/monster_recording_visual"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
+        <!-- TODO: Update blank fragment layout -->
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Write"
-        android:id="@+id/sh04WriteReviewButton"
-        android:layout_alignBottom="@+id/imageView5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="20dp"
-        android:background="@color/sunday" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="270dp"
+            android:id="@+id/imageView5"
+            android:src="@drawable/monster_recording_visual"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="15dp" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Later"
-        android:id="@+id/sh04LaterButton"
-        android:layout_below="@+id/sh04WriteReviewButton"
-        android:layout_alignLeft="@+id/sh04WriteReviewButton"
-        android:layout_alignStart="@+id/sh04WriteReviewButton"
-        android:background="@color/weekdaycolor"
-        android:layout_marginTop="10dp" />
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Write"
+            android:id="@+id/sh04WriteReviewButton"
+            android:layout_alignBottom="@+id/imageView5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:background="@color/sunday" />
 
-    <TextView
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Write a class review and get 2000 points (review 1000 + evaluation 1000)"
-        android:id="@+id/textView19"
-        android:layout_marginTop="30dp"
-        android:layout_alignTop="@+id/imageView5"
-        android:layout_alignLeft="@+id/sh04WriteReviewButton"
-        android:layout_alignStart="@+id/sh04WriteReviewButton"
-        android:minLines="3" />
-</RelativeLayout>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Later"
+            android:id="@+id/sh04LaterButton"
+            android:layout_below="@+id/sh04WriteReviewButton"
+            android:layout_alignLeft="@+id/sh04WriteReviewButton"
+            android:layout_alignStart="@+id/sh04WriteReviewButton"
+            android:background="@color/weekdaycolor"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Write a class review and get 2000 points (review 1000 + evaluation 1000)"
+            android:id="@+id/textView19"
+            android:layout_marginTop="30dp"
+            android:layout_alignTop="@+id/imageView5"
+            android:layout_alignLeft="@+id/sh04WriteReviewButton"
+            android:layout_alignStart="@+id/sh04WriteReviewButton"
+            android:minLines="3" />
+    </RelativeLayout>
+
+</ScrollView>

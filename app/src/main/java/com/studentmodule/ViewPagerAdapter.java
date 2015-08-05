@@ -11,6 +11,7 @@ import android.text.style.ImageSpan;
 import SH02.*;
 import SH03.*;
 import SH01.*;
+import SH2.*;
 
 /**
  * Created by aliabbasjaffri on 08/07/15.
@@ -54,7 +55,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return MyPageFragment.newInstance(1);
+                return SH2.newInstance(" ", "");
             case 1:
                 return SH03.newInstance();
             case 2:

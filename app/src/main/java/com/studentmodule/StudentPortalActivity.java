@@ -190,4 +190,10 @@ public class StudentPortalActivity extends AppCompatActivity
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         super.onDestroy();
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+    }
 }

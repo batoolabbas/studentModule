@@ -3,12 +3,14 @@ package SH01;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.studentmodule.R;
+import com.studentmodule.ViewPagerAdapter;
 
 import java.util.ArrayList;
 

@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.studentmodule.R;
+import com.studentmodule.ViewPagerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.

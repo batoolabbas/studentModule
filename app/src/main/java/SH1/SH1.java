@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.studentmodule.R;
-import com.studentmodule.ViewPagerAdapter;
-
 import java.io.IOException;
-
+import SH4.*;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,10 +35,10 @@ public class SH1 extends Fragment
 {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    private static final String tutorNameParam = "param1";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private String mtutorName;
 
     public static String profile_pic_path;
 
@@ -55,7 +53,11 @@ public class SH1 extends Fragment
     LinearLayout profilePicture;
     ImageView profilePictureBadge;
     ImageView countryPicture;
+    TextView profileName;
     TextView profileDetail;
+    TextView universityName;
+    TextView mTitle;
+    Toolbar toolbar;
     Button video;
     Button audio;
     Button button3;
@@ -70,11 +72,11 @@ public class SH1 extends Fragment
      * @return A new instance of fragment SH1.
      */
     // TODO: Rename and change types and number of parameters
-    public static SH1 newInstance(String param1, String param2)
+    public static SH1 newInstance(String param1)
     {
         SH1 fragment = new SH1();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+        args.putString(tutorNameParam, param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -88,7 +90,7 @@ public class SH1 extends Fragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            mtutorName = getArguments().getString(tutorNameParam);
         }
 
         bitmap_original_dp = null;
@@ -105,8 +107,6 @@ public class SH1 extends Fragment
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sh1, container, false);
 
-        ViewPagerAdapter.studentPortalActivity.setToolbar( "SH1" , true );
-
         blurredBackground = (LinearLayout) view.findViewById(R.id.sh1TopContainer);
 
         dpContainer = (LinearLayout) view.findViewById(R.id.sh1DisplayImageContainer);
@@ -114,7 +114,12 @@ public class SH1 extends Fragment
 
         profilePictureBadge = (ImageView) view.findViewById(R.id.sh1ProfileBadge);
         countryPicture = (ImageView) view.findViewById(R.id.sh1ProfileCountry);
+
+        profileName = (TextView) view.findViewById(R.id.sh1ProfileName);
         profileDetail = (TextView) view.findViewById(R.id.sh1PersonalDetails);
+        universityName = (TextView) view.findViewById(R.id.sh1UniversityName);
+
+        profileName.setText(mtutorName);
 
         video = (Button) view.findViewById(R.id.sh1VideoButton);
         audio = (Button) view.findViewById(R.id.sh1AudioButton);
@@ -220,7 +225,7 @@ public class SH1 extends Fragment
             @Override
             public void onClick(View v) {
 
-
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.teacherProfile, SH4.newInstance() ).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
 
             }
         });
@@ -229,11 +234,9 @@ public class SH1 extends Fragment
             @Override
             public void onClick(View v)
             {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.teacherProfile, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
             }
         });
-
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         return view;
     }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.studentmodule.R;
 import com.studentmodule.StudentPortalActivity;
+import com.studentmodule.TeacherProfileActivity;
 
 import java.util.ArrayList;
 
@@ -62,7 +63,7 @@ public class sh15ArrayAdapter extends ArrayAdapter<sh1_5Data>
             public void onClick(View v)
             {
                 Fragment fragment = SH1_5_1.newInstance(item.getButtonInfo(), item.getListInfo(), item.getListDetail(), position);
-                ((StudentPortalActivity)context).getSupportFragmentManager().beginTransaction().add(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).addToBackStack("").commit();
+                ((TeacherProfileActivity)context).getSupportFragmentManager().beginTransaction().add(R.id.teacherProfile, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
             }
         });
 

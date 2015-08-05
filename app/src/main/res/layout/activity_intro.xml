@@ -1,0 +1,73 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content" android:minWidth="800dp"
+    android:layout_height="fill_parent" tools:context="com.Intro.IntroActivity"
+    android:fillViewport="true"
+    android:focusable="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/imageView6"
+            android:background="@color/sunday"
+            android:layout_marginBottom="-100dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/imageView6"
+            android:background="@color/backgroundcolor"
+            android:layout_marginTop="-100dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:id="@+id/imageView6"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/mss_cha"
+            android:visibility="visible" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="Student"
+            android:id="@+id/studentButton"
+            android:background="@drawable/circle_btn"
+            android:layout_above="@+id/imageView6"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/sunday" />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="Teacher"
+            android:id="@+id/teacherButton"
+            android:layout_below="@+id/imageView6"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circle_btn"
+            android:textColor="@color/backgroundcolor" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Are you a teacher or a Student"
+            android:id="@+id/textView22"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_marginLeft="40dp"
+            android:minLines="3"
+            android:textColor="@color/black" />
+
+
+    </RelativeLayout>
+
+</ScrollView>
+

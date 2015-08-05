@@ -1,54 +1,126 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
-    android:layout_height="fill_parent" tools:context=".LoginActivity"
-    android:background="@color/background">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:minWidth="800dp"
+    android:layout_height="fill_parent" tools:context="com.studentmodule.LoginActivity"
+    android:fillViewport="true"
+    android:focusable="true">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/loginActivityInclude" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+        android:layout_height="fill_parent" tools:context=".LoginActivity"
+        android:background="@color/background">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="휴대폰 번호를 입력하세요"
-        android:id="@+id/textView"
-        android:layout_marginLeft="61dp"
-        android:layout_marginStart="61dp"
-        android:layout_above="@+id/phoneNumberField"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/nextButton"
-        android:layout_alignEnd="@+id/nextButton"
-        android:textSize="15sp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/phoneNumberField"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView" />
+            <include layout="@layout/toolbar" android:id="@+id/loginActivityInclude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/monster"
-        android:layout_marginTop="76dp"
-        android:layout_below="@+id/loginActivityInclude"
-        android:layout_toRightOf="@+id/nextButton"
-        android:layout_toEndOf="@+id/nextButton" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="-30dp">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="다음"
-        android:id="@+id/nextButton"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:background="@color/purple"
-        android:textColor="@color/white" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center">
 
-</RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="휴대폰 번호를 입력하세요"
+                        android:id="@+id/textView"
+                        android:layout_above="@+id/phoneNumberField"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignRight="@+id/nextButton"
+                        android:layout_alignEnd="@+id/nextButton"
+                        android:textSize="15sp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right" />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/imageView"
+                        android:src="@drawable/monster"
+                        android:layout_below="@+id/loginActivityInclude"
+                        android:layout_toRightOf="@+id/nextButton"
+                        android:layout_toEndOf="@+id/nextButton"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center">
+
+                    <EditText
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/phoneNumberField"
+                        android:layout_centerVertical="true"
+                        android:layout_alignLeft="@+id/textView"
+                        android:layout_alignStart="@+id/textView"
+                        android:layout_alignRight="@+id/imageView"
+                        android:layout_alignEnd="@+id/imageView"
+                        android:lines="1"
+                        android:numeric="integer" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="다음"
+                        android:id="@+id/nextButton"
+                        android:layout_alignBottom="@+id/imageView"
+                        android:layout_centerHorizontal="true"
+                        android:background="@color/purple"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

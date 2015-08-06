@@ -1,6 +1,8 @@
 package com.studentmodule;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -19,31 +21,48 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.loginActivityInclude);
-        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        mTitle.setText("Login");
-        setSupportActionBar(toolbar);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!preferences.contains("SkypeID")) {
 
 
-        final EditText phoneNumber = (EditText) findViewById(R.id.phoneNumberField);
-        //String loginPhoneNumber = phoneNumber.getText().toString();
-        //Log.d("phoneNumber" , loginPhoneNumber);
+            setContentView(R.layout.activity_login);
 
-        Button next = (Button) findViewById(R.id.nextButton);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            Toolbar toolbar = (Toolbar) findViewById(R.id.loginActivityInclude);
+            TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+            mTitle.setText("Login");
+            setSupportActionBar(toolbar);
 
-                String loginPhoneNumber = phoneNumber.getText().toString();
-                Log.d("phoneNumber" , loginPhoneNumber);
 
-                Intent i = new Intent( LoginActivity.this , SignUp.class );
-                startActivity(i);
+            final EditText phoneNumber = (EditText) findViewById(R.id.phoneNumberField);
+            //PHONE NUMBER DOES NOT MAKE SENSE -.- SO I'M ASSUMING THIS WILL BE SKYPE ID !
+            //String loginPhoneNumber = phoneNumber.getText().toString();
+            //Log.d("phoneNumber" , loginPhoneNumber);
 
-            }
-        });
+            Button next = (Button) findViewById(R.id.nextButton);
+            next.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    String loginPhoneNumber = phoneNumber.getText().toString();
+                    Log.d("phoneNumber", loginPhoneNumber);
+
+                    //phone number se somehow skypeid deduce kerke shared preferences mein store kerwana hai!
+                    //NOTE: Find out which table to use for this
+
+
+                    Intent i = new Intent(LoginActivity.this, StudentFirstActivity.class);
+                    startActivity(i);
+
+
+                }
+            });
+        }
+        else
+        {
+            Intent i = new Intent(LoginActivity.this, StudentFirstActivity.class);
+            startActivity(i);
+        }
     }
 
     @Override

@@ -124,7 +124,7 @@ public class SignUp extends ActionBarActivity {
                     //batool's code ends here
 
 
-                    Intent i = new Intent(SignUp.this, StudentFirstActivity.class);
+                    Intent i = new Intent(SignUp.this, LoginActivity.class);
 
                     editor.putString("EnglishLevel", englishLevel);
                     editor.putString("SkypeID", skypeID);

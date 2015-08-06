@@ -23,6 +23,9 @@ import com.studentmodule.R;
 import com.studentmodule.StudentPortalActivity;
 import com.studentmodule.TeacherProfileActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SHA#newInstance} factory method to
@@ -35,11 +38,13 @@ public class SHA extends Fragment
     private static final String tutorName = "param1";
     private static final String tutorVideoLink = "param2";
     private static final String tutorRating = "param3";
+    private static final String tutorID = "param4";
 
     // TODO: Rename and change types of parameters
 
     private String tutorNameParam;
     private String tutorVideoLinkParam;
+    private String tutorIDParam;
     private int tutorRatingParam;
 
     private TextView tutorOfTheMonthText;
@@ -61,13 +66,14 @@ public class SHA extends Fragment
      * @return A new instance of fragment SHA.
      */
     // TODO: Rename and change types and number of parameters
-    public static SHA newInstance(String param1, String param2 , int param3)
+    public static SHA newInstance(String param1, String param2 , int param3, String param4)
     {
         SHA fragment = new SHA();
         Bundle args = new Bundle();
         args.putString(tutorName, param1);
         args.putString(tutorVideoLink, param2);
         args.putInt(tutorRating, param3);
+        args.putString(tutorID,param4);
         fragment.setArguments(args);
         return fragment;
     }
@@ -93,7 +99,10 @@ public class SHA extends Fragment
         View view = inflater.inflate(R.layout.fragment_sh, container, false);
 
         tutorOfTheMonthText = (TextView) view.findViewById(R.id.sponsored_tutor_month_txt);
-        tutorOfTheMonthText.setText("For the month of June");
+        Calendar cal= Calendar.getInstance();
+        SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+        String month_name = month_date.format(cal.getTime());
+        tutorOfTheMonthText.setText("For the month of " + month_name);
 
         tutorOfTheMonthName = (TextView) view.findViewById(R.id.tutorOfTheMonthName);
         tutorOfTheMonthName.setText(tutorNameParam);
@@ -108,7 +117,8 @@ public class SHA extends Fragment
             {
                 Toast.makeText( getActivity() , "Button Clicked" , Toast.LENGTH_SHORT ).show();
                 Intent i = new Intent( getActivity() , TeacherProfileActivity.class);
-                i.putExtra("teacherName" , tutorNameParam);
+                i.putExtra("teacherID" , tutorIDParam);
+                i.putExtra("teacherName",tutorNameParam);
                 startActivity(i);
             }
         });
@@ -120,7 +130,7 @@ public class SHA extends Fragment
             {
                 tutorOfTheMonthVideoPlayButton.setVisibility(v.INVISIBLE);
                 //new backgroundVideoLoader().execute( tutorVideoLinkParam );
-                new backgroundVideoLoader().execute( "http://www.ebookfrenzy.com/android_book/movie.mp4");
+                new backgroundVideoLoader().execute( tutorVideoLinkParam);
 
             }
         });

@@ -112,8 +112,8 @@ public class StudentFirstActivity extends AppCompatActivity
                             if (!name.contains("none")) {
                                 String url = jObj.getString("url"+index[i]);
                                 int rank = jObj.getInt("rank"+index[i]);
-
-                                tutorData.add(new shAData(name, url, rank));
+                                String userid = jObj.getString("teacherid"+index[i]);
+                                tutorData.add(new shAData(name, url, rank, userid));
                             }
                         }
                     }
@@ -144,11 +144,11 @@ public class StudentFirstActivity extends AppCompatActivity
 //        tutorData.add(new shAData("Rick" , "www.google.com/Rick" , 9));
 
         //batool's code ends here
-        
+
         tutorsList = new ArrayList<>();
 
         for( int i = 0; i < tutorData.size(); i++ )
-            tutorsList.add( SHA.newInstance( tutorData.get(i).getTutorName() , tutorData.get(i).getVideoLink() , tutorData.get(i).getRating() ) );
+            tutorsList.add( SHA.newInstance( tutorData.get(i).getTutorName() , tutorData.get(i).getVideoLink() , tutorData.get(i).getRating() , tutorData.get(i).getTutorID()) );
 
         mViewPager = (CustomViewPager) findViewById(R.id.firstActivityTeachersPager);
         viewPagerAdapter = new studentFirstActivityPagerAdapter(getSupportFragmentManager() , StudentFirstActivity.this , tutorsList);

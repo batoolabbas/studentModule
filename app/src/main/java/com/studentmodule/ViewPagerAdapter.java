@@ -29,7 +29,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             R.drawable.nowon
     };
 
-    private String tabTitles[] = new String[] { "마이페이지", "쌤께 말걸기", "수강신청" , "Now On" };
+    private String tabTitles[] = new String[] { "마이페이지", "쌤께말걸기", "수강신청" , "Now On" };
 
 
     public ViewPagerAdapter(FragmentManager fm , Context context , StudentPortalActivity activity )
@@ -73,6 +73,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         // Generate title based on item position
         Drawable image = context.getResources().getDrawable(tabLayoutImages[position]);
         image.setBounds(0, 0, image.getIntrinsicWidth()/2, image.getIntrinsicHeight()/2);
+        //image.setBounds(0, 0, image.getMinimumWidth() , image.getMinimumHeight() );
 
         // Replace blank spaces with image icon
         SpannableString sb = new SpannableString( " \n" + tabTitles[position] );

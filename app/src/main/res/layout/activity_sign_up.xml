@@ -339,7 +339,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Skype 다운로드 "
-            android:drawableRight="@drawable/skype"
+            android:drawableRight="@drawable/skype_icon"
             android:id="@+id/downloadSkypeButton"
             android:layout_below="@+id/textView9"
             android:layout_alignRight="@+id/skypeIDField"

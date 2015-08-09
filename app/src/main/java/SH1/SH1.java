@@ -35,11 +35,9 @@ public class SH1 extends Fragment
 {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String tutorIDParam = "param1";
-    private static final String tutorNameParam = "param2";
+    private static final String tutorNameParam = "param1";
 
     // TODO: Rename and change types of parameters
-    private String mtutorID;
     private String mtutorName;
 
     public static String profile_pic_path;
@@ -74,12 +72,11 @@ public class SH1 extends Fragment
      * @return A new instance of fragment SH1.
      */
     // TODO: Rename and change types and number of parameters
-    public static SH1 newInstance(String param1, String param2)
+    public static SH1 newInstance(String param1)
     {
         SH1 fragment = new SH1();
         Bundle args = new Bundle();
-        args.putString(tutorIDParam, param1);
-        args.putString(tutorNameParam,param2);
+        args.putString(tutorNameParam, param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -93,7 +90,6 @@ public class SH1 extends Fragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mtutorID = getArguments().getString(tutorIDParam);
             mtutorName = getArguments().getString(tutorNameParam);
         }
 

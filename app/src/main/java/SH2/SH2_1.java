@@ -86,7 +86,7 @@ public class SH2_1 extends Fragment {
             }
         });
 
-        String totalText = "Total" + "\t\t\t\t\t\t\t\t\t\t" + "1000";
+        String totalText = "Total \t\t\t\t\t\t\t\t\t\t\t\t" + "1000";
 
         totalButton.setText(totalText);
 

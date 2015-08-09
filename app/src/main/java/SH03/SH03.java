@@ -4,6 +4,7 @@ package SH03;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -60,16 +61,29 @@ public class SH03 extends Fragment {
 
     }
 
-    @Override
-    public void onResume()
+    void initializeMediaRecorder()
     {
-        super.onResume();
-
         myRecorder = new MediaRecorder( );
         myRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
         myRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         myRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
         myRecorder.setOutputFile(outputFile);
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        initializeMediaRecorder();
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+
+        initializeMediaRecorder();
     }
 
     @Override
@@ -82,48 +96,48 @@ public class SH03 extends Fragment {
         confirmButton = (Button) view.findViewById(R.id.sh03ConfirmButton);
         confirmButton.setEnabled(false);
 
-        myRecorder = new MediaRecorder( );
-        myRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
-        myRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        myRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
-        myRecorder.setOutputFile(outputFile);
+        initializeMediaRecorder();
 
-        recordButton.setOnClickListener(new View.OnClickListener()
-        {
+        recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 recording = !recording;
 
-                if ( recording)
-                {
+                if (recording) {
                     start();
-                    confirmButton.setBackgroundColor(getResources().getColor(R.color.sunday));
+                    confirmButton.setBackgroundResource(R.drawable.circular_button_pink);
                     confirmButton.setTextColor(getResources().getColor(R.color.white));
                     confirmButton.setEnabled(false);
 
                     recordButton.setText("STOP");
-                    recordButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.stopbtn , 0, 0, 0);
-                }
-                else
-                {
+                    recordButton.setEnabled(false);
+                    recordButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.stopbtn, 0, 0, 0);
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 2.5s = 2500ms
+                            recordButton.setEnabled(true);
+                        }
+                    }, 3000);
+                } else {
                     stop();
-                    confirmButton.setBackgroundColor(getResources().getColor(R.color.weekdaycolor));
+                    confirmButton.setBackgroundResource(R.drawable.circular_button_purple);
                     confirmButton.setTextColor(getResources().getColor(R.color.black));
                     confirmButton.setEnabled(true);
 
                     recordButton.setText("RECORD");
-                    recordButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.playbtn , 0, 0, 0);
+                    recordButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.playbtn, 0, 0, 0);
                 }
             }
         });
 
         final Fragment fragment = new SH03_1();
 
-        confirmButton.setOnClickListener(new View.OnClickListener()
-        {
+        confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction().add(R.id.frame_container, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack("").commit();
             }
         });

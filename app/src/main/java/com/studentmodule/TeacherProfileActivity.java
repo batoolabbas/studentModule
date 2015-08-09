@@ -31,9 +31,9 @@ public class TeacherProfileActivity extends AppCompatActivity
 
 
         Intent i = getIntent();
-        String id = i.getStringExtra("teacherID");
         String name = i.getStringExtra("teacherName");
-        Fragment fragment = SH1.newInstance(id,name);
+
+        Fragment fragment = SH1.newInstance(name);
         getSupportFragmentManager().beginTransaction().replace(R.id.teacherProfile, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
     }
 

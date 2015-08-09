@@ -8,12 +8,14 @@ public class shAData
     String tutorName;
     String videoLink;
     int rating;
+    String tutorID;
 
-    public shAData(String tutorName, String videoLink, int rating)
+    public shAData(String tutorName, String videoLink, int rating, String id)
     {
         this.tutorName = tutorName;
         this.videoLink = videoLink;
         this.rating = rating;
+        this.tutorID = id;
     }
 
     public String getTutorName() {
@@ -39,4 +41,6 @@ public class shAData
     public void setRating(int rating) {
         this.rating = rating;
     }
+
+    public String getTutorID(){ return tutorID; }
 }

@@ -1,5 +1,6 @@
 package com.studentmodule;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -19,8 +20,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import SHA.*;
+import utils.AppConfig;
 
 public class StudentFirstActivity extends AppCompatActivity
 {
@@ -44,6 +57,7 @@ public class StudentFirstActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_first);
+        final String tag_string_req = "TeachersOTM";
 
         toolbar = (Toolbar) findViewById(R.id.firstActivityToolbarInclude);
         mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
@@ -62,15 +76,71 @@ public class StudentFirstActivity extends AppCompatActivity
             }
         });
 
+
         tutorData = new ArrayList<>();
-        tutorData.add(new shAData("Alan" , "www.google.com/Alan" , 5));
-        tutorData.add(new shAData("Doug" , "www.google.com/Doug" , 7));
-        tutorData.add(new shAData("Rick" , "www.google.com/Rick" , 9));
+
+        //batool's code starts here
+        //get teachers of the month from tbl_ad
+        //get video url from tbl_ad_apply
+        //get teacher ranking from tbl_teacher
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                AppConfig.TUTOR_API_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+
+
+                try {
+                    JSONObject jObj = new JSONObject(s);
+                    boolean error =jObj.getBoolean("error");
+
+                    if(!error)
+                    {
+                        String index[] = {"0","1","2"};
+
+                        for(int i=0;i<3;i++) {
+                            String name = jObj.getString("name"+index[i]);
+
+                            if (!name.contains("none")) {
+                                String url = jObj.getString("url"+index[i]);
+                                int rank = jObj.getInt("rank"+index[i]);
+                                String userid = jObj.getString("teacherid"+index[i]);
+                                tutorData.add(new shAData(name, url, rank, userid));
+                            }
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                //exception handling for failing to get teacher data
+            }
+
+    }){
+        protected Map<String,String>getParams(){
+            Map<String,String> params = new HashMap<String,String>();
+            params.put("tag",tag_string_req);
+            return params;
+        }
+        };
+
+
+//        tutorData.add(new shAData("Alan" , "www.google.com/Alan" , 5));
+//        tutorData.add(new shAData("Doug" , "www.google.com/Doug" , 7));
+//        tutorData.add(new shAData("Rick" , "www.google.com/Rick" , 9));
+
+        //batool's code ends here
 
         tutorsList = new ArrayList<>();
 
         for( int i = 0; i < tutorData.size(); i++ )
-            tutorsList.add( SHA.newInstance( tutorData.get(i).getTutorName() , tutorData.get(i).getVideoLink() , tutorData.get(i).getRating() ) );
+            tutorsList.add( SHA.newInstance( tutorData.get(i).getTutorName() , tutorData.get(i).getVideoLink() , tutorData.get(i).getRating() , tutorData.get(i).getTutorID()) );
 
         mViewPager = (CustomViewPager) findViewById(R.id.firstActivityTeachersPager);
         viewPagerAdapter = new studentFirstActivityPagerAdapter(getSupportFragmentManager() , StudentFirstActivity.this , tutorsList);

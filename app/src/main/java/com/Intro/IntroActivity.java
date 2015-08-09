@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.studentmodule.LoginActivity;
 import com.studentmodule.R;
+import com.studentmodule.SignUp;
 
 public class IntroActivity extends AppCompatActivity
 {
@@ -26,7 +27,7 @@ public class IntroActivity extends AppCompatActivity
         studentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent( IntroActivity.this , LoginActivity.class);
+                Intent i = new Intent( IntroActivity.this , SignUp.class);
                 startActivity(i);
             }
         });

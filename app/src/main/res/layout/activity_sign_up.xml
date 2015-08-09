@@ -172,7 +172,8 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" />
+            android:layout_marginRight="15dp"
+            android:id="@+id/view9" />
 
 
         <EditText
@@ -215,7 +216,10 @@
             android:paddingRight="12dp"
             android:gravity="center_vertical|right"
             android:hint="010-0000-0000"
-            android:layout_marginTop="2dp" />
+            android:layout_marginTop="2dp"
+            android:maxLength="13"
+            android:inputType="number"
+            android:numeric="integer" />
 
         <View
             android:layout_width="fill_parent"
@@ -356,7 +360,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
-            android:background="@color/purple"
+            android:background="@drawable/circular_button_purple"
             android:textColor="@color/white" />
 
         <Spinner
@@ -367,13 +371,13 @@
             android:layout_below="@+id/textView2"
             android:entries="@array/spinnerItems"
             android:background="@color/white"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/textView4"
-            android:gravity="center_vertical|right"
+            android:gravity="right"
             android:textAlignment="gravity"
             android:layout_marginTop="3dp"
-            android:layout_toRightOf="@+id/textView4" />
+            android:layout_toRightOf="@+id/textView4"
+            android:paddingLeft="135dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <EditText
             android:layout_width="wrap_content"

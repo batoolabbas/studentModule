@@ -39,15 +39,6 @@ public class StudentFirstActivity extends AppCompatActivity
     private View secondTutorIndicator;
     private View thirdTutorIndicator;
 
-    private int[] tabLayoutImages = {
-            R.drawable.mypage,
-            R.drawable.convo,
-            R.drawable.enrollment,
-            R.drawable.nowon
-    };
-
-    private String tabTitles[] = new String[] { "마이페이지", "쌤께 말걸기", "수강신청" , "Now On" };
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -56,6 +47,7 @@ public class StudentFirstActivity extends AppCompatActivity
 
         toolbar = (Toolbar) findViewById(R.id.firstActivityToolbarInclude);
         mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        mTitle.setText("Featured Tutors of the Month");
 
         firstTutorIndicator  = findViewById(R.id.firstTutorIndicator);
         secondTutorIndicator = findViewById(R.id.secondTutorIndicator);
@@ -129,7 +121,7 @@ public class StudentFirstActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_student_first, menu);
+        //getMenuInflater().inflate(R.menu.menu_student_first, menu);
         return true;
     }
 
@@ -138,26 +130,13 @@ public class StudentFirstActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        //int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        //if (id == R.id.action_settings) {
+        //    return true;
+        //}
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public CharSequence getPageTitle(int position)
-    {
-        // Generate title based on item position
-        Drawable image = getResources().getDrawable(tabLayoutImages[position]);
-        image.setBounds(0, 0, image.getIntrinsicWidth()/3, image.getIntrinsicHeight()/3);
-
-        // Replace blank spaces with image icon
-        SpannableString sb = new SpannableString( " \n" + tabTitles[position] );
-        ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
-        sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        return sb;
     }
 }

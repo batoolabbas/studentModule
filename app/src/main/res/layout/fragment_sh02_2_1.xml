@@ -34,7 +34,7 @@
         android:id="@+id/sh02_2_1SundayButton"
         android:layout_below="@+id/sh02_2_1TextView"
         android:layout_marginTop="5dp"
-        android:background="@color/sunday"
+        android:background="@drawable/circular_button_sunday"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_alignLeft="@+id/sh02_2_1MondayButton"
@@ -48,14 +48,15 @@
         android:text="Monday"
         android:id="@+id/sh02_2_1MondayButton"
         android:layout_below="@+id/sh02_2_1SundayButton"
-        android:background="@color/weekdaycolor"
+        android:background="@drawable/circular_button_purple"
         android:layout_marginTop="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_alignRight="@+id/sh02_2_1SearchMatchingTutorsButton"
         android:layout_alignEnd="@+id/sh02_2_1SearchMatchingTutorsButton"
         android:layout_alignLeft="@+id/sh02_2_1SearchMatchingTutorsButton"
-        android:layout_alignStart="@+id/sh02_2_1SearchMatchingTutorsButton" />
+        android:layout_alignStart="@+id/sh02_2_1SearchMatchingTutorsButton"
+        android:textColor="@color/white" />
 
     <Button
         android:layout_width="wrap_content"
@@ -65,12 +66,13 @@
         android:layout_below="@+id/sh02_2_1MondayButton"
         android:layout_alignLeft="@+id/sh02_2_1MondayButton"
         android:layout_alignStart="@+id/sh02_2_1MondayButton"
-        android:background="@color/weekdaycolor"
+        android:background="@drawable/circular_button_purple"
         android:layout_marginTop="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_alignRight="@+id/sh02_2_1MondayButton"
-        android:layout_alignEnd="@+id/sh02_2_1MondayButton" />
+        android:layout_alignEnd="@+id/sh02_2_1MondayButton"
+        android:textColor="@color/white" />
 
     <Button
         android:layout_width="wrap_content"
@@ -78,14 +80,15 @@
         android:text="Wednesday"
         android:id="@+id/sh02_2_1WednesdayButton"
         android:layout_below="@+id/sh02_2_1TuesdayButton"
-        android:background="@color/weekdaycolor"
+        android:background="@drawable/circular_button_purple"
         android:layout_marginTop="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_alignLeft="@+id/sh02_2_1MondayButton"
         android:layout_alignStart="@+id/sh02_2_1MondayButton"
         android:layout_alignRight="@+id/sh02_2_1TuesdayButton"
-        android:layout_alignEnd="@+id/sh02_2_1TuesdayButton" />
+        android:layout_alignEnd="@+id/sh02_2_1TuesdayButton"
+        android:textColor="@color/white" />
 
     <Button
         android:layout_width="wrap_content"
@@ -93,14 +96,15 @@
         android:text="Thursday"
         android:id="@+id/sh02_2_1ThursdayButton"
         android:layout_below="@+id/sh02_2_1WednesdayButton"
-        android:background="@color/weekdaycolor"
+        android:background="@drawable/circular_button_purple"
         android:layout_marginTop="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_alignRight="@+id/sh02_2_1WednesdayButton"
         android:layout_alignEnd="@+id/sh02_2_1WednesdayButton"
         android:layout_alignLeft="@+id/sh02_2_1WednesdayButton"
-        android:layout_alignStart="@+id/sh02_2_1WednesdayButton" />
+        android:layout_alignStart="@+id/sh02_2_1WednesdayButton"
+        android:textColor="@color/white" />
 
     <Button
         android:layout_width="wrap_content"
@@ -108,14 +112,15 @@
         android:text="Friday"
         android:id="@+id/sh02_2_1FridayButton"
         android:layout_below="@+id/sh02_2_1ThursdayButton"
-        android:background="@color/weekdaycolor"
+        android:background="@drawable/circular_button_purple"
         android:layout_marginTop="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_alignRight="@+id/sh02_2_1WednesdayButton"
         android:layout_alignEnd="@+id/sh02_2_1WednesdayButton"
         android:layout_alignLeft="@+id/sh02_2_1ThursdayButton"
-        android:layout_alignStart="@+id/sh02_2_1ThursdayButton" />
+        android:layout_alignStart="@+id/sh02_2_1ThursdayButton"
+        android:textColor="@color/white" />
 
     <Button
         android:layout_width="wrap_content"
@@ -123,14 +128,15 @@
         android:text="Saturday"
         android:id="@+id/sh02_2_1SaturdayButton"
         android:layout_below="@+id/sh02_2_1FridayButton"
-        android:background="@color/weekdaycolor"
+        android:background="@drawable/circular_button_purple"
         android:layout_marginTop="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:layout_alignRight="@+id/sh02_2_1WednesdayButton"
         android:layout_alignEnd="@+id/sh02_2_1WednesdayButton"
         android:layout_alignLeft="@+id/sh02_2_1WednesdayButton"
-        android:layout_alignStart="@+id/sh02_2_1WednesdayButton" />
+        android:layout_alignStart="@+id/sh02_2_1WednesdayButton"
+        android:textColor="@color/white" />
 
     <Button
         android:layout_width="wrap_content"
@@ -139,8 +145,8 @@
         android:id="@+id/sh02_2_1SearchMatchingTutorsButton"
         android:layout_below="@+id/sh02_2_1SaturdayButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@color/toolbar"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/circular_button_pink"
         android:textColor="@color/white"
         android:paddingLeft="5dp"
         android:paddingRight="5dp" />

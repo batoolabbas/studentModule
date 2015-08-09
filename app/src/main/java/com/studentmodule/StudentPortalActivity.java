@@ -57,7 +57,7 @@ public class StudentPortalActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.baseActivityToolbarInclude);
         mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
 
-        setToolbar("Student Mode", false);
+        setToolbar(viewPagerAdapter.getPageName(0), false);
 
         tabLayout = (TabLayout) findViewById(R.id.baseActivityTabLayoutInclude);
         tabLayout.setupWithViewPager(mViewPager);
@@ -85,10 +85,8 @@ public class StudentPortalActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
-        setToolbar("Student Mode" , false);
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             public void uncaughtException(Thread paramThread, Throwable paramThrowable) {
                 Log.e("Error" + Thread.currentThread().getStackTrace()[2], paramThrowable.getLocalizedMessage());
@@ -101,7 +99,7 @@ public class StudentPortalActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_student_portal, menu);
+        //getMenuInflater().inflate(R.menu.menu_student_portal, menu);
         return true;
     }
 
@@ -110,13 +108,14 @@ public class StudentPortalActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        /*
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
+        */
         return super.onOptionsItemSelected(item);
     }
 
@@ -126,12 +125,24 @@ public class StudentPortalActivity extends AppCompatActivity
         {
             mTitle.setText(title);
             setSupportActionBar(toolbar);
+
+            Log.d("BackButton", " " + backButton);
+
             if (backButton)
             {
-                getSupportActionBar().setHomeButtonEnabled(backButton);
-                getSupportActionBar().setDisplayHomeAsUpEnabled(backButton);
                 toolbar.setNavigationIcon(R.drawable.back_arrow);
+                getSupportActionBar().setHomeButtonEnabled(true);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
             }
+            else
+            {
+                toolbar.setNavigationIcon(null);
+                getSupportActionBar().setHomeButtonEnabled(false);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                getSupportActionBar().setDisplayShowHomeEnabled(false);
+            }
+
             toolbar.setNavigationOnClickListener(new View.OnClickListener()
             {
                 @Override
@@ -180,7 +191,6 @@ public class StudentPortalActivity extends AppCompatActivity
         if (manager.getBackStackEntryCount() > 0) {
             manager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
-        setToolbar("Student Mode" , false);
     }
 
 

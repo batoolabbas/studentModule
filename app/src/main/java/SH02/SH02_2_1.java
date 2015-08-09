@@ -102,7 +102,7 @@ public class SH02_2_1 extends Fragment
                 else if( buttonClicked[0] )
                 {
                     monday.setCompoundDrawablesWithIntrinsicBounds( null, null, null, null);
-                    monday.setTextColor(Color.parseColor("#000000"));
+                    monday.setTextColor(Color.parseColor("#FFFFFF"));
                     buttonClicked[0] = false;
                 }
                 selectedDays[0] = buttonClicked[0];
@@ -123,7 +123,7 @@ public class SH02_2_1 extends Fragment
                 else if( buttonClicked[1] )
                 {
                     tuesday.setCompoundDrawablesWithIntrinsicBounds( null, null, null, null);
-                    tuesday.setTextColor(Color.parseColor("#000000"));
+                    tuesday.setTextColor(Color.parseColor("#FFFFFF"));
                     buttonClicked[1] = false;
                 }
                 selectedDays[1] = buttonClicked[1];
@@ -144,7 +144,7 @@ public class SH02_2_1 extends Fragment
                 else if( buttonClicked[2] )
                 {
                     wednesday.setCompoundDrawablesWithIntrinsicBounds( null, null, null, null);
-                    wednesday.setTextColor(Color.parseColor("#000000"));
+                    wednesday.setTextColor(Color.parseColor("#FFFFFF"));
                     buttonClicked[2] = false;
                 }
                 selectedDays[2] = buttonClicked[2];
@@ -165,7 +165,7 @@ public class SH02_2_1 extends Fragment
                 else if( buttonClicked[3] )
                 {
                     thursday.setCompoundDrawablesWithIntrinsicBounds( null, null, null, null);
-                    thursday.setTextColor(Color.parseColor("#000000"));
+                    thursday.setTextColor(Color.parseColor("#FFFFFF"));
                     buttonClicked[3] = false;
                 }
                 selectedDays[3] = buttonClicked[3];
@@ -186,7 +186,7 @@ public class SH02_2_1 extends Fragment
                 else if( buttonClicked[4] )
                 {
                     friday.setCompoundDrawablesWithIntrinsicBounds( null, null, null, null);
-                    friday.setTextColor(Color.parseColor("#000000"));
+                    friday.setTextColor(Color.parseColor("#FFFFFF"));
                     buttonClicked[4] = false;
                 }
                 selectedDays[4] = buttonClicked[4];
@@ -207,7 +207,7 @@ public class SH02_2_1 extends Fragment
                 else if( buttonClicked[5] )
                 {
                     saturday.setCompoundDrawablesWithIntrinsicBounds( null, null, null, null);
-                    saturday.setTextColor(Color.parseColor("#000000"));
+                    saturday.setTextColor(Color.parseColor("#FFFFFF"));
                     buttonClicked[5] = false;
                 }
                 selectedDays[5] = buttonClicked[5];
@@ -225,12 +225,6 @@ public class SH02_2_1 extends Fragment
             }
         });
 
-
-
-
-
         return view;
     }
-
-
 }

@@ -68,10 +68,7 @@ public class SH02_2_1_1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sh02_2_1_1, container, false);
 
-        items.add(new sh02_2_1_1Data(R.drawable.jane , "Jane" ));
-        items.add(new sh02_2_1_1Data(R.drawable.jane , "Peter" ));
-        items.add(new sh02_2_1_1Data(R.drawable.jane , "Martin" ));
-        items.add(new sh02_2_1_1Data(R.drawable.jane , "Andrew" ));
+        clearAndAddToArray();
 
         adaptor = new sh02211ArrayAdapter(getActivity() , R.layout.layout_sh02_2_1_1_custom_row , items );
 
@@ -81,5 +78,28 @@ public class SH02_2_1_1 extends Fragment {
         return view;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
 
+        clearAndAddToArray();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        clearAndAddToArray();
+    }
+
+    void clearAndAddToArray()
+    {
+        if(!items.isEmpty())
+            items.clear();
+
+        items.add(new sh02_2_1_1Data(R.drawable.jane , "Jane" ));
+        items.add(new sh02_2_1_1Data(R.drawable.jane , "Peter" ));
+        items.add(new sh02_2_1_1Data(R.drawable.jane , "Martin" ));
+        items.add(new sh02_2_1_1Data(R.drawable.jane , "Andrew" ));
+    }
 }

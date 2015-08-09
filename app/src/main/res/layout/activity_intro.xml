@@ -41,7 +41,9 @@
             android:background="@drawable/circle_btn"
             android:layout_above="@+id/imageView6"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/sunday" />
+            android:textColor="@color/sunday"
+            android:textStyle="bold"
+            android:textSize="20sp" />
 
         <Button
             android:layout_width="150dp"
@@ -51,7 +53,9 @@
             android:layout_below="@+id/imageView6"
             android:layout_centerHorizontal="true"
             android:background="@drawable/circle_btn"
-            android:textColor="@color/backgroundcolor" />
+            android:textColor="@color/backgroundcolor"
+            android:textStyle="bold"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="150dp"

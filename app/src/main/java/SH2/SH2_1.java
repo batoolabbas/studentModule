@@ -69,11 +69,9 @@ public class SH2_1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sh2_1, container, false);
 
-        items.add(new sh2_1Data("Class Review" , "" , "" ));
-        items.add(new sh2_1Data("Question/Opinion" , "" , "" ));
-        items.add(new sh2_1Data("Trial Class" , "" , "" ));
-        items.add(new sh2_1Data("Class Review" , "" , "" ));
-        items.add(new sh2_1Data("May" , "" , "" ));
+        clearAndAddToArray();
+
+        ViewPagerAdapter.studentPortalActivity.setToolbar("My Points" , true);
 
         adaptor = new sh21ArrayAdapter( getActivity() , R.layout.layout_sh2_1_custom_row , items );
 
@@ -87,12 +85,37 @@ public class SH2_1 extends Fragment {
 
             }
         });
-        String totalText = "Total           1000";
+
+        String totalText = "Total" + "\t\t\t\t\t\t\t\t\t\t" + "1000";
 
         totalButton.setText(totalText);
 
         return view;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
 
+        clearAndAddToArray();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        clearAndAddToArray();
+    }
+
+    void clearAndAddToArray()
+    {
+        if(!items.isEmpty())
+            items.clear();
+
+        items.add(new sh2_1Data("Class Review" , "bla bla" , "bla bla" ));
+        items.add(new sh2_1Data("Question/Opinion" , "bla bla" , "bla bla" ));
+        items.add(new sh2_1Data("Trial Class" , "bla bla" , "bla bla" ));
+        items.add(new sh2_1Data("Class Review" , "bla bla" , "bla bla" ));
+        items.add(new sh2_1Data("May" , "bla bla" , "bla bla" ));
+    }
 }

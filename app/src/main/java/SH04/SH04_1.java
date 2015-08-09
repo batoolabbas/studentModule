@@ -3,15 +3,18 @@ package SH04;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.studentmodule.R;
+import com.studentmodule.ViewPagerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,6 +69,8 @@ public class SH04_1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sh04_1, container, false);
+
+        ViewPagerAdapter.studentPortalActivity.setToolbar("Review" , true);
 
         EditText editText = (EditText) view.findViewById(R.id.sh04_1ReviewEditText);
         reviewText = editText.getText().toString();

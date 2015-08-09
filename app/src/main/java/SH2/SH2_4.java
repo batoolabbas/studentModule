@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -34,6 +36,7 @@ public class SH2_4 extends Fragment {
     private String[] levels;
     private TextView englishLevel;
     private Spinner englishLevelSpinner;
+    private Button modifyLevelButton;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
@@ -76,7 +79,9 @@ public class SH2_4 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_sh2_4, container, false);
+        final View view = inflater.inflate(R.layout.fragment_sh2_4, container, false);
+
+        ViewPagerAdapter.studentPortalActivity.setToolbar("My Level" , true);
 
         englishLevel = (TextView) view.findViewById(R.id.sh2_4EnglishLevelTextView);
         englishLevel.setText(sharedPreferences.getString("EnglishLevel", ""));
@@ -89,8 +94,20 @@ public class SH2_4 extends Fragment {
                 pos = i;
         }
 
+        ArrayAdapter my_Adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinneritem , levels );
         englishLevelSpinner = (Spinner) view.findViewById(R.id.sh2_4EnglishLevelSpinner);
+        englishLevelSpinner.setAdapter(my_Adapter);
         englishLevelSpinner.setSelection(pos);
+
+        modifyLevelButton = (Button) view.findViewById(R.id.sh2_4ModifyLevelButton);
+        modifyLevelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                modifyLevelButton.setVisibility(v.INVISIBLE);
+                englishLevelSpinner.setVisibility(v.VISIBLE);
+            }
+        });
 
         englishLevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -100,6 +117,9 @@ public class SH2_4 extends Fragment {
                     englishLevel.setText(levels[position]);
                     editor.putString("EnglishLevel", levels[position]);
                     editor.commit();
+
+                    modifyLevelButton.setVisibility(view.VISIBLE);
+                    englishLevelSpinner.setVisibility(view.INVISIBLE);
                 }
             }
 

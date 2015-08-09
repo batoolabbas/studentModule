@@ -46,7 +46,7 @@
             android:layout_below="@+id/sh02_2TextView"
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
-            android:background="@color/toolbar" />
+            android:background="@drawable/circular_button_pink" />
 
     </RelativeLayout>
 

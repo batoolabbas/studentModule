@@ -70,10 +70,9 @@ public class SH2_3 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sh2_3, container, false);
 
-        items.add(new sh2_3Data(R.drawable.jane , "Jane" , R.drawable.country));
-        items.add(new sh2_3Data(R.drawable.jane , "Jane" , R.drawable.country));
-        items.add(new sh2_3Data(R.drawable.jane , "Jane" , R.drawable.country));
-        items.add(new sh2_3Data(R.drawable.jane , "Jane" , R.drawable.country));
+        ViewPagerAdapter.studentPortalActivity.setToolbar("My Tutor" , true);
+
+        clearAndAddToArray();
 
         adaptor = new sh23ArrayAdapter(getActivity() , R.layout.layout_sh2_3_custom_row , items );
 
@@ -83,5 +82,28 @@ public class SH2_3 extends Fragment {
         return view;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
 
+        clearAndAddToArray();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        clearAndAddToArray();
+    }
+
+    void clearAndAddToArray()
+    {
+        if(!items.isEmpty())
+            items.clear();
+
+        items.add(new sh2_3Data(R.drawable.jane , "Jane" , R.drawable.country));
+        items.add(new sh2_3Data(R.drawable.jane , "Jane" , R.drawable.country));
+        items.add(new sh2_3Data(R.drawable.jane , "Jane" , R.drawable.country));
+        items.add(new sh2_3Data(R.drawable.jane , "Jane" , R.drawable.country));
+    }
 }

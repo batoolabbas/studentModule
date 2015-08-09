@@ -6,6 +6,8 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +37,8 @@ public class SignUp extends ActionBarActivity {
     String englishLevel;
     String [] levels;
 
+    int textlength;
+
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -48,6 +52,8 @@ public class SignUp extends ActionBarActivity {
 
         levels = getResources().getStringArray(R.array.spinnerItems);
 
+        textlength = 0;
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.signupActivityInclude);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText("Sign up");
@@ -60,6 +66,36 @@ public class SignUp extends ActionBarActivity {
         String email = emailField.getText().toString();
 
         phoneNumberField = (EditText) findViewById(R.id.phoneNumberField);
+        phoneNumberField.addTextChangedListener(new TextWatcher()
+            {
+                public void afterTextChanged(Editable s)
+                {
+
+                }
+
+                public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                {
+
+                }
+
+                public void onTextChanged(CharSequence s, int start, int before, int count)
+                {
+                    String text = phoneNumberField.getText().toString();
+                    textlength = phoneNumberField.getText().length();
+
+                    if(text.endsWith(" "))
+                        return;
+
+                    if(textlength == 3 || textlength == 8 )
+                    {
+                        phoneNumberField.setText(new StringBuilder(text).insert(text.length(), "-").toString());
+                        phoneNumberField.setSelection(phoneNumberField.getText().length());
+                    }
+
+                }}
+        );
+
+
         String phoneNumber = phoneNumberField.getText().toString();
 
         passwordField = (EditText) findViewById(R.id.passwordField);
@@ -116,7 +152,7 @@ public class SignUp extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sign_up, menu);
+        //getMenuInflater().inflate(R.menu.menu_sign_up, menu);
         return true;
     }
 
@@ -125,13 +161,14 @@ public class SignUp extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        /*
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
+        */
         return super.onOptionsItemSelected(item);
     }
 }

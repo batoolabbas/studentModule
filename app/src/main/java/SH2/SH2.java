@@ -66,6 +66,8 @@ public class SH2 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sh2, container, false);
 
+        ViewPagerAdapter.studentPortalActivity.setToolbar("마이페이지", false);
+
         final Fragment myPointFragment = new SH2_1();
         final Fragment myClassFragment = new SH2_2();
         final Fragment myTutorFragment = new SH2_3();
@@ -110,5 +112,17 @@ public class SH2 extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        ViewPagerAdapter.studentPortalActivity.setToolbar("마이페이지", false);
+    }
 
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        ViewPagerAdapter.studentPortalActivity.setToolbar("마이페이지", false);
+    }
 }

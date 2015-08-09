@@ -1,13 +1,13 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content" android:minWidth="800dp"
-    android:layout_height="fill_parent" tools:context="SH2.SH2_4"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:minWidth="800dp"
+    android:layout_height="match_parent" tools:context="SH2.SH2_4"
     android:fillViewport="true"
     android:focusable="true">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         android:layout_height="match_parent" tools:context="SH2.SH2_4"
-        android:background="@color/purple">
+        android:background="@color/backgroundcolor">
 
         <!-- TODO: Update blank fragment layout -->
 
@@ -20,7 +20,7 @@
             android:id="@+id/textview19"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="120dp"
             android:textColor="@color/white" />
 
         <TextView
@@ -31,32 +31,33 @@
             android:id="@+id/sh2_4EnglishLevelTextView"
             android:layout_below="@+id/textview19"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/toolbar" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Modify Level"
-            android:id="@+id/textView14"
-            android:layout_marginTop="73dp"
-            android:textColor="@color/white"
-            android:layout_below="@+id/sh2_4EnglishLevelTextView"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:gravity="center_vertical|center_horizontal" />
 
         <Spinner
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:id="@+id/sh2_4EnglishLevelSpinner"
-            android:layout_below="@+id/textView14"
+            android:layout_marginTop="70dp"
+            android:entries="@array/spinnerItems"
+            android:layout_below="@+id/sh2_4EnglishLevelTextView"
+            android:visibility="invisible"
+            android:background="@drawable/circular_button_purple"
+            android:layout_alignRight="@+id/textview19"
+            android:layout_alignEnd="@+id/textview19"
+            android:layout_alignLeft="@+id/textview19"
+            android:layout_alignStart="@+id/textview19" />
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:text="ModifyLevel"
+            android:id="@+id/sh2_4ModifyLevelButton"
+            android:background="@drawable/circular_button_purple"
+            android:layout_alignTop="@+id/sh2_4EnglishLevelSpinner"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:entries="@array/spinnerItems" />
+            android:textColor="@color/white"
+            android:layout_alignBottom="@+id/sh2_4EnglishLevelSpinner" />
     </RelativeLayout>
 
 </ScrollView>

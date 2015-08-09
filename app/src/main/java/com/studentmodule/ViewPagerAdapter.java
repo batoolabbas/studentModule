@@ -72,12 +72,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     {
         // Generate title based on item position
         Drawable image = context.getResources().getDrawable(tabLayoutImages[position]);
-        image.setBounds(0, 0, image.getIntrinsicWidth()/3, image.getIntrinsicHeight()/3);
+        image.setBounds(0, 0, image.getIntrinsicWidth()/2, image.getIntrinsicHeight()/2);
 
         // Replace blank spaces with image icon
         SpannableString sb = new SpannableString( " \n" + tabTitles[position] );
-        ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
-        sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BASELINE);//  .ALIGN_BOTTOM);
+        sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_USER);//  .SPAN_EXCLUSIVE_EXCLUSIVE);
         return sb;
     }
 

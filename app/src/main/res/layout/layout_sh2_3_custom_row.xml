@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white">
 
     <ImageView
@@ -20,11 +20,13 @@
         android:text="Medium Text"
         android:id="@+id/sh2_3TutorNameTextView"
         android:layout_toRightOf="@+id/sh2_3TutorImageView"
-        android:gravity="center_vertical|center_horizontal"
+        android:gravity="center_vertical"
         android:layout_alignParentTop="true"
         android:layout_alignBottom="@+id/sh2_3TutorImageView"
         android:layout_toLeftOf="@+id/sh2_3TutorCountryImageView"
-        android:layout_toStartOf="@+id/sh2_3TutorCountryImageView" />
+        android:layout_toStartOf="@+id/sh2_3TutorCountryImageView"
+        android:textStyle="bold"
+        android:paddingLeft="20dp" />
 
     <ImageView
         android:layout_width="30dp"

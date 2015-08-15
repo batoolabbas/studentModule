@@ -1,17 +1,32 @@
 package SH2;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.studentmodule.R;
 import com.studentmodule.ViewPagerAdapter;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import SHA.shAData;
+import utils.AppConfig;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +42,8 @@ public class SH2_1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private int total=0;
 
     private ListView LV;
     private sh21ArrayAdapter adaptor;
@@ -86,7 +103,7 @@ public class SH2_1 extends Fragment {
             }
         });
 
-        String totalText = "Total \t\t\t\t\t\t\t\t\t\t\t\t" + "1000";
+        String totalText = "Total \t\t\t\t\t\t\t\t\t\t\t\t" + getString(total);
 
         totalButton.setText(totalText);
 
@@ -111,6 +128,52 @@ public class SH2_1 extends Fragment {
     {
         if(!items.isEmpty())
             items.clear();
+
+        final String tag_string_req = "getPoints";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                AppConfig.TUTOR_API_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+
+
+                try {
+                    JSONObject jObj = new JSONObject(s);
+//                    boolean error =jObj.getBoolean("error");
+//
+//                    if(!error)
+//                    {
+                    for(int i=0;i<jObj.length();i++) {
+                        int point = jObj.getJSONObject(getString(i)).getInt("point");
+
+
+                        //                       }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                //exception handling for failing to get teacher data
+            }
+
+        }){
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+            String userid = preferences.getString("SkypeID",null);
+                protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String,String>();
+                params.put("tag",tag_string_req);
+                params.put("userid",userid);
+                return params;
+            }
+        };
+
 
         items.add(new sh2_1Data("Class Review" , "bla bla" , "bla bla" ));
         items.add(new sh2_1Data("Question/Opinion" , "bla bla" , "bla bla" ));

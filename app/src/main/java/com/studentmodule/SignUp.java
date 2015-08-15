@@ -17,6 +17,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import helper.SQLiteHandler;
+import utils.AppConfig;
+import utils.AppController;
 
 
 public class SignUp extends ActionBarActivity {
@@ -60,10 +76,10 @@ public class SignUp extends ActionBarActivity {
         setSupportActionBar(toolbar);
 
         nameField = (EditText) findViewById(R.id.nameField);
-        String name = nameField.getText().toString();
+        final String name = nameField.getText().toString();
 
         emailField = (EditText) findViewById(R.id.emailField);
-        String email = emailField.getText().toString();
+        final String email = emailField.getText().toString();
 
         phoneNumberField = (EditText) findViewById(R.id.phoneNumberField);
         phoneNumberField.addTextChangedListener(new TextWatcher()
@@ -96,19 +112,19 @@ public class SignUp extends ActionBarActivity {
         );
 
 
-        String phoneNumber = phoneNumberField.getText().toString();
+        final String phoneNumber = phoneNumberField.getText().toString();
 
         passwordField = (EditText) findViewById(R.id.passwordField);
-        String password = passwordField.getText().toString();
+        final String password = passwordField.getText().toString();
 
         reEnterPasswordField = (EditText) findViewById(R.id.reEnterPasswordField);
-        String reEnterPassword = reEnterPasswordField.getText().toString();
+        final String reEnterPassword = reEnterPasswordField.getText().toString();
 
         skypeIDField = (EditText) findViewById(R.id.skypeIDField);
         final String skypeID = skypeIDField.getText().toString();
 
         birthdayField = (EditText) findViewById(R.id.birthdayField);
-        String birthday = birthdayField.getText().toString();
+        final String birthday = birthdayField.getText().toString();
 
         levelSelect = (Spinner) findViewById(R.id.englishLevelSpinner);
 
@@ -137,14 +153,27 @@ public class SignUp extends ActionBarActivity {
         confirmSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SignUp.this, StudentFirstActivity.class);
 
-                editor.putString("EnglishLevel", englishLevel);
-                editor.putString("SkypeID", skypeID);
-                Log.i("English Level", englishLevel);
-                editor.commit();
+        //        if(password.contentEquals(reEnterPassword)) {
+                    //batool's code starts here
+                    UserDetails ud = new UserDetails(name, skypeID, password, phoneNumber, email, englishLevel);
+                    registerUser(ud);
+                    //batool's code ends here
 
-                startActivity(i);
+
+                    Intent i = new Intent(SignUp.this, LoginActivity.class);
+
+                    editor.putString("EnglishLevel", englishLevel);
+                    editor.putString("SkypeID", skypeID);
+                    editor.putInt("Points",ud.getPoint());
+                    Log.i("English Level", englishLevel);
+                    editor.commit();
+
+                    startActivity(i);
+  //              }
+    //            else{
+
+      //          }
             }
         });
     }
@@ -171,4 +200,143 @@ public class SignUp extends ActionBarActivity {
         */
         return super.onOptionsItemSelected(item);
     }
+
+    public class UserDetails
+    {
+        String Name, skype, pswd, email, phoneNum, englishLvl;
+        int point;
+
+        public String getname() {
+            return Name;
+        }
+
+        public int getPoint(){return point;}
+
+        public void setname(String fname) {
+            this.Name = fname;
+        }
+
+        public String getSkype() {
+            return skype;
+        }
+
+        public void setSkype(String skype) {
+            this.skype = skype;
+        }
+
+        public String getPhoneNum() {
+            return phoneNum;
+        }
+
+        public void setPhoneNum(String sx) {
+            this.phoneNum = sx;
+        }
+
+        public String getEmail(){ return email;}
+
+        public void setEmail(String email){ this.email=email;}
+
+        public String getPswd(){ return pswd;}
+
+        public void setPswd(String pwd){this.pswd = pwd;}
+
+        public String getEnglishLvl(){ return englishLvl; }
+
+        public void setEnglishLvl(String elvl){ this.englishLvl=elvl; }
+
+        UserDetails(String n, String sk,String p, String pn,String e, String elvl)
+        {
+            Name = n;
+            skype = sk;
+            pswd = p;
+            phoneNum = pn;
+            email=e;
+            englishLvl=elvl;
+            point=1000;
+        }
+    }
+
+    private void registerUser(final UserDetails ud) {
+        // Tag used to cancel the request
+        String tag_string_req = "signup";
+
+        //      pDialog.setMessage("Registering ...");
+        //     showDialog();
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                AppConfig.TUTOR_API_URL,
+                new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        //Log.d(TAG, "Register Response: " + response.toString());
+
+                        //                       hideDialog();
+
+                        try {
+                            JSONObject jObj = new JSONObject(response);
+                            boolean error = jObj.getBoolean("error");
+                            if (!error) {
+
+//                        Toast.makeText(getApplicationContext(),
+//                                ud.toString(), Toast.LENGTH_LONG).show();
+
+                                SQLiteHandler mydb =  SQLiteHandler.getInstance(getApplicationContext());
+                                mydb.addUser(ud);
+
+                                UserData.skypeid = ud.skype;
+
+                                UserData.name = ud.Name;
+                                UserData.point = ud.point;
+//                        Toast.makeText(getApplicationContext(),
+//                                "user stored", Toast.LENGTH_LONG).show();
+
+                                //       Intent intent = new Intent(getApplicationContext(), TermsActivity.class);
+                                //       startActivity(intent);
+
+                                //finish();
+                            } else {
+
+                                // Error occurred in registration. Get the error
+                                // message
+                                String errorMsg = jObj.getString("error_msg");
+                                Toast.makeText(getApplicationContext(),
+                                        errorMsg, Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                Log.e(TAG, "Registration Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                //               hideDialog();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<>();
+                params.put("tag", "signup");
+                params.put("name", ud.getname());
+                params.put("email", ud.getEmail());
+                params.put("pwd", ud.getPswd());
+                params.put("skypeid", ud.getSkype());
+                params.put("email", ud.getEmail());
+                params.put("hp1",ud.getPhoneNum().substring(0,3));
+                params.put("hp2",ud.getPhoneNum().substring(3,7));
+                params.put("hp3",ud.getPhoneNum().substring(7,11));
+                return params;
+            }
+
+        };
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
+
 }

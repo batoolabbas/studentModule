@@ -36,6 +36,8 @@ public class SHA extends Fragment
     private static final String tutorName = "param1";
     private static final String tutorVideoLink = "param2";
     private static final String tutorRating = "param3";
+    private static final String tutorID = "param4";
+
 
     // TODO: Rename and change types of parameters
 
@@ -44,6 +46,7 @@ public class SHA extends Fragment
 
     private String tutorNameParam;
     private String tutorVideoLinkParam;
+    private String tutorIDParam;
     private int tutorRatingParam;
 
     private TextView tutorOfTheMonthText;
@@ -65,13 +68,14 @@ public class SHA extends Fragment
      * @return A new instance of fragment SHA.
      */
     // TODO: Rename and change types and number of parameters
-    public static SHA newInstance(String param1, String param2 , int param3)
+    public static SHA newInstance(String param1, String param2 , int param3, String param4)
     {
         SHA fragment = new SHA();
         Bundle args = new Bundle();
         args.putString(tutorName, param1);
         args.putString(tutorVideoLink, param2);
         args.putInt(tutorRating, param3);
+        args.putString(tutorID, param4);
         fragment.setArguments(args);
         return fragment;
     }
@@ -87,6 +91,7 @@ public class SHA extends Fragment
             tutorNameParam = getArguments().getString(tutorName);
             tutorVideoLinkParam = getArguments().getString(tutorVideoLink);
             tutorRatingParam = getArguments().getInt(tutorRating);
+            tutorIDParam = getArguments().getString(tutorID);
         }
     }
 
@@ -113,6 +118,9 @@ public class SHA extends Fragment
                 Toast.makeText( getActivity() , "Button Clicked" , Toast.LENGTH_SHORT ).show();
                 Intent i = new Intent( getActivity() , TeacherProfileActivity.class);
                 i.putExtra("teacherName" , tutorNameParam);
+                i.putExtra("teacherID" , tutorIDParam);
+                i.putExtra("teacherRating",tutorRatingParam);
+                i.putExtra("teacherURL",tutorVideoLinkParam);
                 startActivity(i);
             }
         });
@@ -124,7 +132,7 @@ public class SHA extends Fragment
             {
                 tutorOfTheMonthVideoPlayButton.setVisibility(v.INVISIBLE);
                 //new backgroundVideoLoader().execute( tutorVideoLinkParam );
-                new backgroundVideoLoader().execute( "http://www.ebookfrenzy.com/android_book/movie.mp4");
+                new backgroundVideoLoader().execute( tutorVideoLinkParam);
 
             }
         });

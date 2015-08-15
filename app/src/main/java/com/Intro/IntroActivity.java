@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.studentmodule.LoginActivity;
 import com.studentmodule.R;
+import com.studentmodule.SignUp;
 
 public class IntroActivity extends AppCompatActivity
 {

@@ -1,17 +1,30 @@
 package SH1;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.studentmodule.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import utils.AppConfig;
 
 
 /**
@@ -22,12 +35,16 @@ import java.util.ArrayList;
 public class SH1_5 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String tutorIDParam = "param1";
+    private static final String tutorNameParam = "param2";
+    private static final String tutorRankParam = "param3";
+    private static final String tutorURLParam = "param4";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String mtutorID;
+    private String mtutorName;
+    private int mtutorRank;
+    private String mtutorURL;
 
     private ListView LV;
     private sh15ArrayAdapter adaptor;
@@ -43,11 +60,13 @@ public class SH1_5 extends Fragment {
      * @return A new instance of fragment SH1_5.
      */
     // TODO: Rename and change types and number of parameters
-    public static SH1_5 newInstance(String param1, String param2) {
+    public static SH1_5 newInstance(String param1, String param2, int param3,String param4) {
         SH1_5 fragment = new SH1_5();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(tutorIDParam, param1);
+        args.putString(tutorNameParam, param2);
+        args.putInt(tutorRankParam,param3);
+        args.putString(tutorURLParam,param4);
         fragment.setArguments(args);
         return fragment;
     }
@@ -60,8 +79,10 @@ public class SH1_5 extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mtutorID = getArguments().getString(tutorIDParam);
+            mtutorName = getArguments().getString(tutorNameParam);
+            mtutorRank = getArguments().getInt(tutorRankParam);
+            mtutorURL = getArguments().getString(tutorURLParam);
         }
     }
 
@@ -70,6 +91,52 @@ public class SH1_5 extends Fragment {
     {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sh1_5, container, false);
+
+        final String tag_string_req = "getReviews";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                AppConfig.TUTOR_API_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+
+
+                try {
+                    JSONObject jObj = new JSONObject(s);
+//                    boolean error =jObj.getBoolean("error");
+//
+//                    if(!error)
+//                    {
+
+                    for(int i=0;i<jObj.length();i++) {
+                        String date = jObj.getJSONObject(getString(i)).getString("lecture_date");
+
+                        //                       }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                //exception handling for failing to get teacher data
+            }
+
+        }){
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+            String userid = preferences.getString("SkypeID",null);
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String,String>();
+                params.put("tag",tag_string_req);
+                params.put("userid",userid);
+                return params;
+            }
+        };
+
+
 
         items.add(new sh1_5Data("hello" , "How are" , "you bhai" , true ));
         items.add(new sh1_5Data("hello" , "How are" , "you bhai" , false ));

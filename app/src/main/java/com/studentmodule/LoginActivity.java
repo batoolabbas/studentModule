@@ -1,6 +1,8 @@
 package com.studentmodule;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +16,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.Intro.IntroActivity;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.ref.PhantomReference;
+import java.util.HashMap;
+import java.util.Map;
+
+import SHA.shAData;
+import utils.AppConfig;
+
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -25,42 +43,48 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.loginActivityInclude);
-        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        mTitle.setText("Login");
-        setSupportActionBar(toolbar);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!preferences.contains("SkypeID")) {
 
-        textlength = 0;
 
-        final EditText phoneNumber = (EditText) findViewById(R.id.phoneNumberField);
-        phoneNumber.addTextChangedListener(new TextWatcher()
-        {
 
-            public void afterTextChanged(Editable s)
+            Toolbar toolbar = (Toolbar) findViewById(R.id.loginActivityInclude);
+            TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+            mTitle.setText("Login");
+            setSupportActionBar(toolbar);
+
+            textlength = 0;
+
+            final EditText phoneNumber = (EditText) findViewById(R.id.phoneNumberField);
+            phoneNumber.addTextChangedListener(new TextWatcher()
             {
 
-            }
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {
-
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {
-                String text = phoneNumber.getText().toString();
-                textlength = phoneNumber.getText().length();
-
-                if(text.endsWith(" "))
-                    return;
-
-                if(textlength == 3 || textlength == 8 )
+                public void afterTextChanged(Editable s)
                 {
-                    phoneNumber.setText(new StringBuilder(text).insert(text.length(), "-").toString());
-                    phoneNumber.setSelection(phoneNumber.getText().length());
+
                 }
 
-            }}
+                public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                {
+
+                }
+
+                public void onTextChanged(CharSequence s, int start, int before, int count)
+                {
+                    String text = phoneNumber.getText().toString();
+                    textlength = phoneNumber.getText().length();
+
+                    if(text.endsWith(" "))
+                        return;
+
+                    if(textlength == 3 || textlength == 8 )
+                    {
+                        phoneNumber.setText(new StringBuilder(text).insert(text.length(), "-").toString());
+                        phoneNumber.setSelection(phoneNumber.getText().length());
+                    }
+
+                }
+            }
         );
 
 
@@ -70,14 +94,70 @@ public class LoginActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                String loginPhoneNumber = phoneNumber.getText().toString();
+                final String loginPhoneNumber = phoneNumber.getText().toString();
                 Log.d("phoneNumber" , loginPhoneNumber);
 
-                Intent i = new Intent( LoginActivity.this , SignUp.class );
+                final String tag_string_req= "getLogin";
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                        AppConfig.TUTOR_API_URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+
+
+                        try {
+                            JSONObject jObj = new JSONObject(s);
+//                    boolean error =jObj.getBoolean("error");
+//
+                            final String SkypeID = jObj.getString("userid");
+                            final int Points = jObj.getInt("point");
+
+                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                            editor.putString("SkypeID", SkypeID);
+                            editor.putInt("Points",Points);
+                            editor.commit();
+
+//                    if(!error)
+//                    {
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        //exception handling for failing to get teacher data
+                    }
+
+                }){
+                    protected Map<String,String> getParams(){
+                        Map<String,String> params = new HashMap<String,String>();
+                        params.put("tag",tag_string_req);
+                        params.put("phone",loginPhoneNumber);
+                        return params;
+                    }
+                };
+
+
+
+                Intent i = new Intent( LoginActivity.this , IntroActivity.class );
                 startActivity(i);
 
             }
         });
+
+        }
+        else
+        {
+            Intent i = new Intent(LoginActivity.this, StudentFirstActivity.class);
+            startActivity(i);
+        }
+
     }
 
     @Override

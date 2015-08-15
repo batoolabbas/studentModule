@@ -19,6 +19,8 @@ public class TeacherProfileActivity extends AppCompatActivity
     private Toolbar toolbar;
     private static TextView mTitle;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -29,11 +31,12 @@ public class TeacherProfileActivity extends AppCompatActivity
         mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         changeToolbarTitle("Teacher Profile");
 
-
         Intent i = getIntent();
+        String id = i.getStringExtra("teacherID");
         String name = i.getStringExtra("teacherName");
-
-        Fragment fragment = SH1.newInstance(name);
+        String url = i.getStringExtra("teacherURL");
+        int rating = i.getIntExtra("teacherRating",0);
+        Fragment fragment = SH1.newInstance(id,name,rating,url);
         getSupportFragmentManager().beginTransaction().replace(R.id.teacherProfile, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
     }
 

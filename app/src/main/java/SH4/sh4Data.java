@@ -1,16 +1,18 @@
 package SH4;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by aliabbasjaffri on 03/08/15.
  */
 public class sh4Data
 {
     int badgeImage;
-    int profilePicture;
+    Bitmap profilePicture;
     String tutorName;
     int tutorCountry;
 
-    public sh4Data(int badgeImage, int profilePicture, String tutorName, int tutorCountry) {
+    public sh4Data(int badgeImage, Bitmap profilePicture, String tutorName, int tutorCountry) {
         this.badgeImage = badgeImage;
         this.profilePicture = profilePicture;
         this.tutorName = tutorName;
@@ -25,11 +27,11 @@ public class sh4Data
         this.badgeImage = badgeImage;
     }
 
-    public int getProfilePicture() {
+    public Bitmap getProfilePicture() {
         return profilePicture;
     }
 
-    public void setProfilePicture(int profilePicture) {
+    public void setProfilePicture(Bitmap profilePicture) {
         this.profilePicture = profilePicture;
     }
 

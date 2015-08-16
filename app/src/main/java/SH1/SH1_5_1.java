@@ -32,12 +32,14 @@ public class SH1_5_1 extends Fragment {
     private static final String listDetail = "param3";
     private static final String position = "param4";
     private static final String content = "param5";
+    private static final String star = "param6";
 
     // TODO: Rename and change types of parameters
     private String mButtonInfo;
     private String mListInfo;
     private String mListDetail;
     private int mPosition;
+    private int mstar;
     private String mContent;
 
     private ListView LV;
@@ -54,7 +56,7 @@ public class SH1_5_1 extends Fragment {
      * @return A new instance of fragment SH1_5_1.
      */
     // TODO: Rename and change types and number of parameters
-    public static SH1_5_1 newInstance(String param1, String param2, String param3 , String param5 ,int param4)
+    public static SH1_5_1 newInstance(String param1, String param2, String param3 , String param5 , int param6 , int param4)
     {
         SH1_5_1 fragment = new SH1_5_1();
         Bundle args = new Bundle();
@@ -63,6 +65,7 @@ public class SH1_5_1 extends Fragment {
         args.putString(listDetail, param3);
         args.putInt(position, param4);
         args.putString(content, param5);
+        args.putInt(star,param6);
         fragment.setArguments(args);
         return fragment;
     }
@@ -80,6 +83,7 @@ public class SH1_5_1 extends Fragment {
             mListDetail = getArguments().getString(listDetail);
             mPosition = getArguments().getInt(position);
             mContent = getArguments().getString(content);
+            mstar = getArguments().getInt(star);
         }
     }
 
@@ -102,7 +106,7 @@ public class SH1_5_1 extends Fragment {
         RatingBar rb = (RatingBar) view.findViewById(R.id.sh1_5_1RatingBar);
         rb.setMax(5);
         rb.setNumStars(5);
-        rb.setRating(4.0f);
+        rb.setRating(mstar);
 
         items.add(new sh1_5_1Data("hello" , "How are you bhai"));
         items.add(new sh1_5_1Data("hello" , "How are you bhai"));

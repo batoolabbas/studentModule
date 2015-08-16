@@ -2,6 +2,9 @@ package SH4;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +51,7 @@ public class sh4ArrayAdapter extends ArrayAdapter<sh4Data>
         badgeImage.setImageResource(item.getBadgeImage());
 
         ImageView profileImage = (ImageView) convertView.findViewById(R.id.sh4RowTutorImageView);
-        profileImage.setImageResource(item.getProfilePicture());
+        profileImage.setImageBitmap(Bitmap.createScaledBitmap(item.getProfilePicture(), profileImage.getWidth(), profileImage.getHeight(), true));
 
         TextView tutorName = (TextView) convertView.findViewById(R.id.sh4RowTutorNameTextView);
         tutorName.setText(item.getTutorName());

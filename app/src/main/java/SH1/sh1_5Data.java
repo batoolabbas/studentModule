@@ -9,14 +9,16 @@ public class sh1_5Data
     String listInfo;
     String listDetail;
     String content;
+    int star;
     Boolean buttonType; //true for regular,  false for trial
 
-    public sh1_5Data(String buttonInfo, String listInfo, String listDetail, String content, Boolean buttonType) {
+    public sh1_5Data(String buttonInfo, String listInfo, String listDetail, String content, int star, Boolean buttonType) {
         this.buttonInfo = buttonInfo;
         this.listInfo = listInfo;
         this.listDetail = listDetail;
         this.buttonType = buttonType;
         this.content =content;
+        this.star = star;
     }
 
     public String getButtonInfo() {
@@ -52,4 +54,6 @@ public class sh1_5Data
     }
 
     public String getContent(){return this.content;}
+
+    public int getStar(){return this.star;}
 }

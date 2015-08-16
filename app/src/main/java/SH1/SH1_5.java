@@ -67,6 +67,7 @@ public class SH1_5 extends Fragment {
         args.putString(tutorNameParam, param2);
         args.putInt(tutorRankParam,param3);
         args.putString(tutorURLParam,param4);
+        
         fragment.setArguments(args);
         return fragment;
     }
@@ -113,13 +114,14 @@ public class SH1_5 extends Fragment {
                         String writerID = jObj.getJSONObject(getString(i)).getString("userid");
                         boolean b_Type=true;
                         String content = jObj.getJSONObject(getString(i)).getString("contents");
+                        int star= jObj.getJSONObject(getString(i)).getInt("star");
 
                         if(type == "Trial") // true
                         {
                             b_Type = false;
                         }
 
-                        items.add(new sh1_5Data(type, title , writerID + "/"+ date ,content, b_Type ));
+                        items.add(new sh1_5Data(type, title , writerID + "/"+ date ,content, star ,b_Type ));
 
                         //                       }
                     }

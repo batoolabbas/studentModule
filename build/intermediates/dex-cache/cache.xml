@@ -2,53 +2,53 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
+        jar="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
-        <dex dex="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\pre-dexed\debug\classes-307749cc43684b377abde14a6fb259ad0c4ecc18.jar" />
+        <dex dex="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\pre-dexed\debug\classes-b49774884bb5909ca9d3b7c6294ee9ac6a24667f.jar" />
     </item>
     <item
-        jar="C:\Users\DELL\AppData\Local\Android\sdk\build-tools\22.0.1\renderscript\lib\renderscript-v8.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="2b276904cd854be6d460f2bcec9cf2cddaf580c1">
-        <dex dex="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\pre-dexed\debug\renderscript-v8-b9f9810403083aec65e488beefd7217533699cf3.jar" />
-    </item>
-    <item
-        jar="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-7098dde1b231fc5e731b800799736fb34f7e4891.jar" />
-    </item>
-    <item
-        jar="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jar="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\pre-dexed\debug\classes-78124660fdfd2167bb6374f5978a19442a568c30.jar" />
+        <dex dex="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\pre-dexed\debug\classes-ed919730c618a370b351e6eba31f5bfd625a9f11.jar" />
     </item>
     <item
-        jar="C:\Users\DELL\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jar="D:\Hamza\Android\adt-bundle-windows-x86-20140702\sdk\build-tools\22.0.1\renderscript\lib\renderscript-v8.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2b276904cd854be6d460f2bcec9cf2cddaf580c1">
+        <dex dex="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\pre-dexed\debug\renderscript-v8-d45a74856e6bbbd0a914e0f87f09c77077ecd49c.jar" />
+    </item>
+    <item
+        jar="D:\Hamza\Android\adt-bundle-windows-x86-20140702\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-60348c823b976cdf4ac07f85a1172eae66856b31.jar" />
+        <dex dex="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-63272ab8b56fcd8f2979cf7c7d79a15726e98fa2.jar" />
     </item>
     <item
-        jar="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\pre-dexed\debug\classes-982bfb93327ccc0e0a0d47a68d8a3c425f7a9bee.jar" />
-    </item>
-    <item
-        jar="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\libs\volley.jar"
+        jar="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\libs\volley.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="d4aaa36e04ee71a83444f8367c97a46fda662d2c">
-        <dex dex="C:\Users\DELL\Desktop\Hammzy\GITSTUFF\studentModule\app\build\intermediates\pre-dexed\debug\volley-835cba732a294034052a11283e226d1fac35aa8a.jar" />
+        <dex dex="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\pre-dexed\debug\volley-2e442749960252c68ed26324f1395ad7820bfab8.jar" />
+    </item>
+    <item
+        jar="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\pre-dexed\debug\classes-c15390669c4f96060b4a6a0023f349be2bdb5d25.jar" />
+    </item>
+    <item
+        jar="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="D:\Hamza\Work\MonsterPortal\Batool\studentModule\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-d3504a97ab143fe59ae4a3804202a4ba81c4b37b.jar" />
     </item>
 
 </items>

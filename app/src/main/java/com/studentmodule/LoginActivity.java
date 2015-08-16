@@ -31,6 +31,7 @@ import java.util.Map;
 
 import SHA.shAData;
 import utils.AppConfig;
+import utils.AppController;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -104,7 +105,7 @@ public class LoginActivity extends ActionBarActivity {
                     @Override
                     public void onResponse(String s) {
 
-
+                        Log.d("Response:", s);
                         try {
                             JSONObject jObj = new JSONObject(s);
 //                    boolean error =jObj.getBoolean("error");
@@ -116,8 +117,11 @@ public class LoginActivity extends ActionBarActivity {
                             SharedPreferences.Editor editor = sharedPreferences.edit();
 
                             editor.putString("SkypeID", SkypeID);
-                            editor.putInt("Points",Points);
+                            editor.putInt("Points", Points);
                             editor.commit();
+
+                            Intent i = new Intent( LoginActivity.this , StudentFirstActivity.class );
+                            startActivity(i);
 
 //                    if(!error)
 //                    {
@@ -131,22 +135,20 @@ public class LoginActivity extends ActionBarActivity {
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
+                        Log.d("Error:", error.getMessage());
                         //exception handling for failing to get teacher data
                     }
 
                 }){
                     protected Map<String,String> getParams(){
+                        Log.d("Map:", "Sending post variables");
                         Map<String,String> params = new HashMap<String,String>();
                         params.put("tag",tag_string_req);
                         params.put("phone",loginPhoneNumber);
                         return params;
                     }
                 };
-
-
-
-                Intent i = new Intent( LoginActivity.this , IntroActivity.class );
-                startActivity(i);
+                AppController.getInstance().addToRequestQueue(stringRequest, tag_string_req);
 
             }
         });

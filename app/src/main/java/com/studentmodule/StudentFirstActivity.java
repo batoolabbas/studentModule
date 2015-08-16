@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,7 @@ import java.util.Map;
 
 import SHA.*;
 import utils.AppConfig;
+import utils.AppController;
 
 public class StudentFirstActivity extends AppCompatActivity
 {
@@ -90,9 +92,10 @@ public class StudentFirstActivity extends AppCompatActivity
             @Override
             public void onResponse(String s) {
 
-
+                Log.d("Response:", s);
                 try {
                     JSONObject jObj = new JSONObject(s);
+                    //TODO: Handle if only one gets returned
 //                    boolean error =jObj.getBoolean("error");
 //
 //                    if(!error)
@@ -110,6 +113,56 @@ public class StudentFirstActivity extends AppCompatActivity
                         }
                         //                       }
                     }
+
+                    tutorsList = new ArrayList<>();
+
+                    for( int i = 0; i < tutorData.size(); i++ )
+                        tutorsList.add( SHA.newInstance( tutorData.get(i).getTutorName() , tutorData.get(i).getVideoLink() , tutorData.get(i).getRating(), tutorData.get(i).getTutorID()));
+
+                    mViewPager = (CustomViewPager) findViewById(R.id.firstActivityTeachersPager);
+                    viewPagerAdapter = new studentFirstActivityPagerAdapter(getSupportFragmentManager() , StudentFirstActivity.this , tutorsList);
+                    mViewPager.setPagingEnabled(true);
+                    mViewPager.setAdapter(viewPagerAdapter);
+
+                    mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                        @Override
+                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
+                        {
+                            switch(position + 1)
+                            {
+                                case 1:
+                                {
+                                    firstTutorIndicator.setBackgroundResource(R.drawable.circle_pink);
+                                    secondTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
+                                    thirdTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
+                                }break;
+
+                                case 2:
+                                {
+                                    firstTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
+                                    secondTutorIndicator.setBackgroundResource(R.drawable.circle_pink);
+                                    thirdTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
+                                }break;
+
+                                case 3:
+                                {
+                                    firstTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
+                                    secondTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
+                                    thirdTutorIndicator.setBackgroundResource(R.drawable.circle_pink);
+                                }break;
+                            }
+                        }
+
+                        @Override
+                        public void onPageSelected(int position) {
+
+                        }
+
+                        @Override
+                        public void onPageScrollStateChanged(int state) {
+
+                        }
+                    });
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -120,75 +173,26 @@ public class StudentFirstActivity extends AppCompatActivity
             @Override
             public void onErrorResponse(VolleyError error)
             {
+                Log.d("Error:", error.getMessage());
                 //exception handling for failing to get teacher data
             }
 
         }){
             protected Map<String,String> getParams(){
+                Log.d("Progress:","Sending post data");
                 Map<String,String> params = new HashMap<String,String>();
                 params.put("tag",tag_string_req);
                 return params;
             }
         };
 
-
+         AppController.getInstance().addToRequestQueue(stringRequest, tag_string_req);
 //        tutorData.add(new shAData("Alan" , "www.google.com/Alan" , 5));
 //        tutorData.add(new shAData("Doug" , "www.google.com/Doug" , 7));
 //        tutorData.add(new shAData("Rick" , "www.google.com/Rick" , 9));
 
-        //batool's code ends here
 
 
-
-        tutorsList = new ArrayList<>();
-
-        for( int i = 0; i < tutorData.size(); i++ )
-            tutorsList.add( SHA.newInstance( tutorData.get(i).getTutorName() , tutorData.get(i).getVideoLink() , tutorData.get(i).getRating(), tutorData.get(i).getTutorID()));
-
-        mViewPager = (CustomViewPager) findViewById(R.id.firstActivityTeachersPager);
-        viewPagerAdapter = new studentFirstActivityPagerAdapter(getSupportFragmentManager() , StudentFirstActivity.this , tutorsList);
-        mViewPager.setPagingEnabled(true);
-        mViewPager.setAdapter(viewPagerAdapter);
-
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
-            {
-                switch(position + 1)
-                {
-                    case 1:
-                    {
-                        firstTutorIndicator.setBackgroundResource(R.drawable.circle_pink);
-                        secondTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
-                        thirdTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
-                    }break;
-
-                    case 2:
-                    {
-                        firstTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
-                        secondTutorIndicator.setBackgroundResource(R.drawable.circle_pink);
-                        thirdTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
-                    }break;
-
-                    case 3:
-                    {
-                        firstTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
-                        secondTutorIndicator.setBackgroundResource(R.drawable.circle_purple);
-                        thirdTutorIndicator.setBackgroundResource(R.drawable.circle_pink);
-                    }break;
-                }
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
     }
 
     @Override

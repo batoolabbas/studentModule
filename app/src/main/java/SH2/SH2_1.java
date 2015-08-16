@@ -148,6 +148,8 @@ public class SH2_1 extends Fragment {
                         String date = jObj.getJSONObject(getString(i)).getString("point_date");
                         String type = jObj.getJSONObject(getString(i)).getString("flag_point_type");
 
+                        total += point;
+
                         if(type=="10")
                         {
                             type += ": Sign up";

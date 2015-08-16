@@ -19,6 +19,7 @@ import SH2.*;
 /**
  * Created by aliabbasjaffri on 08/07/15.
  */
+
 public class MyPageFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
@@ -57,6 +58,7 @@ public class MyPageFragment extends Fragment {
         videoPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //new backgroundVideoLoader().execute("http://www.ebookfrenzy.com/android_book/movie.mp4");
                 videoPlayButton.setVisibility(View.INVISIBLE);
             }

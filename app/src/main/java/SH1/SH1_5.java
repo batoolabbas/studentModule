@@ -107,15 +107,25 @@ public class SH1_5 extends Fragment {
 //                    {
 
                     for(int i=0;i<jObj.length();i++) {
-                        String date = jObj.getJSONObject(getString(i)).getString("lecture_date");
+                        String date = jObj.getJSONObject(getString(i)).getString("reg_date");
+                        String type = "Regular";
+                        String title = jObj.getJSONObject(getString(i)).getString("title");
+                        String writerID = jObj.getJSONObject(getString(i)).getString("userid");
+                        boolean b_Type=true;
+                        String content = jObj.getJSONObject(getString(i)).getString("contents");
+
+                        if(type == "Trial") // true
+                        {
+                            b_Type = false;
+                        }
+
+                        items.add(new sh1_5Data(type, title , writerID + "/"+ date ,content, b_Type ));
 
                         //                       }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }
         }, new Response.ErrorListener(){
             @Override
@@ -131,19 +141,10 @@ public class SH1_5 extends Fragment {
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String,String>();
                 params.put("tag",tag_string_req);
-                params.put("userid",userid);
+                params.put("tutorid",tutorIDParam);
                 return params;
             }
         };
-
-
-
-        items.add(new sh1_5Data("hello" , "How are" , "you bhai" , true ));
-        items.add(new sh1_5Data("hello" , "How are" , "you bhai" , false ));
-        items.add(new sh1_5Data("hello" , "How are" , "you bhai" , true ));
-        items.add(new sh1_5Data("hello" , "How are" , "you bhai" , false ));
-        items.add(new sh1_5Data("hello" , "How are" , "you bhai" , true ));
-        items.add(new sh1_5Data("hello" , "How are" , "you bhai" , false ));
 
         adaptor = new sh15ArrayAdapter( getActivity() , R.layout.layout_sh1_5_custom_row , items );
 

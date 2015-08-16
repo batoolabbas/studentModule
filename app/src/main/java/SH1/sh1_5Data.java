@@ -8,13 +8,15 @@ public class sh1_5Data
     String buttonInfo;
     String listInfo;
     String listDetail;
+    String content;
     Boolean buttonType; //true for regular,  false for trial
 
-    public sh1_5Data(String buttonInfo, String listInfo, String listDetail, Boolean buttonType) {
+    public sh1_5Data(String buttonInfo, String listInfo, String listDetail, String content, Boolean buttonType) {
         this.buttonInfo = buttonInfo;
         this.listInfo = listInfo;
         this.listDetail = listDetail;
         this.buttonType = buttonType;
+        this.content =content;
     }
 
     public String getButtonInfo() {
@@ -48,4 +50,6 @@ public class sh1_5Data
     public void setButtonType(Boolean buttonType) {
         this.buttonType = buttonType;
     }
+
+    public String getContent(){return this.content;}
 }

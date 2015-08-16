@@ -145,7 +145,47 @@ public class SH2_1 extends Fragment {
 //                    {
                     for(int i=0;i<jObj.length();i++) {
                         int point = jObj.getJSONObject(getString(i)).getInt("point");
+                        String date = jObj.getJSONObject(getString(i)).getString("point_date");
+                        String type = jObj.getJSONObject(getString(i)).getString("flag_point_type");
 
+                        if(type=="10")
+                        {
+                            type += ": Sign up";
+                        }
+                        else if(type=="20")
+                        {
+                            type += ": Class Review";
+                        }
+                        else if(type=="30")
+                        {
+                            type += ": Class Review";
+                        }
+                        else if(type=="40")
+                        {
+                            type += ": Question and Opinion";
+                        }
+                        else if(type=="50")
+                        {
+                            type +=": Class Review";
+                        }
+                        else if(type=="60")
+                        {
+                            type+=": Purchased points";
+                        }
+                        else if(type=="70")
+                        {
+                            type +=": Trial Class";
+                        }
+                        else if(type=="80")
+                        {
+                            type +=": Class Review";
+                        }
+                        else if(type=="90")
+                        {
+                            type +=": Class Review";
+                        }
+
+                        items.add(new sh2_1Data(type , date , point ));
 
                         //                       }
                     }
@@ -174,11 +214,5 @@ public class SH2_1 extends Fragment {
             }
         };
 
-
-        items.add(new sh2_1Data("Class Review" , "bla bla" , "bla bla" ));
-        items.add(new sh2_1Data("Question/Opinion" , "bla bla" , "bla bla" ));
-        items.add(new sh2_1Data("Trial Class" , "bla bla" , "bla bla" ));
-        items.add(new sh2_1Data("Class Review" , "bla bla" , "bla bla" ));
-        items.add(new sh2_1Data("May" , "bla bla" , "bla bla" ));
     }
 }

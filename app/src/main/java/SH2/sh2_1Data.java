@@ -7,9 +7,9 @@ public class sh2_1Data
 {
     String columnOne;
     String columnTwo;
-    String columnThree;
+    int columnThree;
 
-    public sh2_1Data(String columnOne, String columnTwo, String columnThree)
+    public sh2_1Data(String columnOne, String columnTwo, int columnThree)
     {
         this.columnOne = columnOne;
         this.columnTwo = columnTwo;
@@ -32,11 +32,11 @@ public class sh2_1Data
         this.columnTwo = columnTwo;
     }
 
-    public String getColumnThree() {
+    public int getColumnThree() {
         return columnThree;
     }
 
-    public void setColumnThree(String columnThree) {
+    public void setColumnThree(int columnThree) {
         this.columnThree = columnThree;
     }
 }

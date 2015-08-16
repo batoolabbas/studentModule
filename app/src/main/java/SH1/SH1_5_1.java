@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.studentmodule.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 
@@ -29,12 +31,14 @@ public class SH1_5_1 extends Fragment {
     private static final String listTitle = "param2";
     private static final String listDetail = "param3";
     private static final String position = "param4";
+    private static final String content = "param5";
 
     // TODO: Rename and change types of parameters
     private String mButtonInfo;
     private String mListInfo;
     private String mListDetail;
     private int mPosition;
+    private String mContent;
 
     private ListView LV;
     private sh151ArrayAdapter adaptor;
@@ -50,7 +54,7 @@ public class SH1_5_1 extends Fragment {
      * @return A new instance of fragment SH1_5_1.
      */
     // TODO: Rename and change types and number of parameters
-    public static SH1_5_1 newInstance(String param1, String param2, String param3 , int param4)
+    public static SH1_5_1 newInstance(String param1, String param2, String param3 , String param5 ,int param4)
     {
         SH1_5_1 fragment = new SH1_5_1();
         Bundle args = new Bundle();
@@ -58,6 +62,7 @@ public class SH1_5_1 extends Fragment {
         args.putString(listTitle, param2);
         args.putString(listDetail, param3);
         args.putInt(position, param4);
+        args.putString(content, param5);
         fragment.setArguments(args);
         return fragment;
     }
@@ -74,6 +79,7 @@ public class SH1_5_1 extends Fragment {
             mListInfo = getArguments().getString(listTitle);
             mListDetail = getArguments().getString(listDetail);
             mPosition = getArguments().getInt(position);
+            mContent = getArguments().getString(content);
         }
     }
 
@@ -90,6 +96,8 @@ public class SH1_5_1 extends Fragment {
         listInfo.setText(mListInfo);
         TextView listDetail = (TextView) rl.findViewById(R.id.sh1_5ListDetail);
         listDetail.setText(mListDetail);
+        TextView content = (TextView) view.findViewById(R.id.textView13);
+        content.setText(mContent);
 
         RatingBar rb = (RatingBar) view.findViewById(R.id.sh1_5_1RatingBar);
         rb.setMax(5);

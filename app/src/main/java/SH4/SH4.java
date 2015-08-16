@@ -1,9 +1,11 @@
 package SH4;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +15,21 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.studentmodule.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import SH1.sh1_5Data;
+import utils.AppConfig;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,6 +97,9 @@ public class SH4 extends Fragment
         LV.setAdapter(adaptor);
         tabs[0] = true;
         tabs[1] = false;
+
+        //nation id= 4
+        //nation id = 6
 
         americanTab.setOnClickListener(new View.OnClickListener()
         {
@@ -157,6 +174,48 @@ public class SH4 extends Fragment
     private void getAmericanTutorsData()
     {
         items.clear();
+
+        final String tag_string_req = "getReviews";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                AppConfig.TUTOR_API_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+
+
+                try {
+                    JSONObject jObj = new JSONObject(s);
+//                    boolean error =jObj.getBoolean("error");
+//
+//                    if(!error)
+//                    {
+
+                    for(int i=0;i<jObj.length();i++) {
+                        String date = jObj.getJSONObject(getString(i)).getString("reg_date");
+
+                        //                       }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener(){
+            @Override
+            public void onErrorResponse(VolleyError error)
+            {
+                //exception handling for failing to get teacher data
+            }
+
+        }){
+
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String,String>();
+                params.put("tag",tag_string_req);
+                params.put("country","USA");
+                return params;
+            }
+        };
+
+
         items.add(new sh4Data(R.drawable.tutor_profile_badge , R.drawable.jane , "Jane Roberts" , R.drawable.country  ));
         items.add(new sh4Data(R.drawable.tutor_profile_badge , R.drawable.jane , "Jane Roberts" , R.drawable.country  ));
         items.add(new sh4Data(R.drawable.tutor_profile_badge , R.drawable.jane , "Jane Roberts" , R.drawable.country  ));
